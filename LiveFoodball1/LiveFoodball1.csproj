@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\css\cdn.livebongda8.com\40x40_min\football\team\0a39d6cf470e969f0cc90b082c28a3fa.jpg" />
+    <None Include="wwwroot\css\cdn.livebongda8.com\40x40_min\football\team\0b01c7d68feb22290f3b0da91bef689d.jpg" />
+    <None Include="wwwroot\css\cdn.livebongda8.com\40x40_min\football\team\13d8532225dea4fca8e0ebdfb27b83e4.jpg" />
+    <None Include="wwwroot\css\cdn.livebongda8.com\40x40_min\football\team\4dbf73a4c63032786c198ecd47c21109.jpg" />
+    <None Include="wwwroot\css\cdn.livebongda8.com\40x40_min\football\team\5b52e27a9d5bf294f5b593c4c071500e.jpg" />
+    <None Include="wwwroot\css\cdn.livebongda8.com\40x40_min\football\team\7649bb4bc48a8255f27925a97b49af40.jpg" />
+    <None Include="wwwroot\css\cdn.livebongda8.com\40x40_min\football\team\a370afda41a7ae62dcb8d1b721b92bed.jpg" />
+    <None Include="wwwroot\css\cdn.livebongda8.com\40x40_min\football\team\af2108b31664d582d4e59c34c9be571b.jpg" />
+    <None Include="wwwroot\css\cdn.livebongda8.com\40x40_min\football\team\c432976945dc8b1ac46792dfa97ea068.jpg" />
+    <None Include="wwwroot\css\cdn.livebongda8.com\40x40_min\football\team\e4ba31fba036a999321d5460f7f2d1d1.jpg" />
+    <None Include="wwwroot\css\cdn.livebongda8.com\40x40_min\football\team\f1a2987a8ae3620ed2ed5462e0e80f5e.jpg" />
+    <None Include="wwwroot\css\cdn.livebongda8.com\40x40_min\football\team\f653d5976458f0dcce2b3939259acffa.jpg" />
+    <None Include="wwwroot\css\cdn.livebongda8.com\livebongda8\_next\static\chunks\103-4d57ecc82b6435f8.js" />
+    <None Include="wwwroot\css\cdn.livebongda8.com\livebongda8\_next\static\chunks\125-c3b57d5165e19b42.js" />
+    <None Include="wwwroot\css\cdn.livebongda8.com\livebongda8\_next\static\chunks\147e179b-3ad5fa8c3de258b2.js" />
+    <None Include="wwwroot\css\cdn.livebongda8.com\livebongda8\_next\static\chunks\255-e14c43f88c477bb5.js" />
+    <None Include="wwwroot\css\cdn.livebongda8.com\livebongda8\_next\static\chunks\285-3b1fba206fff77e3.js" />
+    <None Include="wwwroot\css\cdn.livebongda8.com\livebongda8\_next\static\chunks\358-52a8bd9455032d43.js" />
+    <None Include="wwwroot\css\cdn.livebongda8.com\livebongda8\_next\static\chunks\69-93768cc974b119ab.js" />
+    <None Include="wwwroot\css\cdn.livebongda8.com\livebongda8\_next\static\chunks\828-a1352af3cf4569f6.js" />
+    <None Include="wwwroot\css\cdn.livebongda8.com\livebongda8\_next\static\chunks\935-d33eae5aa8c4704a.js" />
+    <None Include="wwwroot\css\cdn.livebongda8.com\livebongda8\_next\static\chunks\app\layout-bc0df1204a175dc2.js" />
+    <None Include="wwwroot\css\cdn.livebongda8.com\livebongda8\_next\static\chunks\app\[locale]\dang-nhap\page-17d6fea00ac53b23.js" />
+    <None Include="wwwroot\css\cdn.livebongda8.com\livebongda8\_next\static\chunks\app\[locale]\layout-10e617434c19fdf6.js" />
+    <None Include="wwwroot\css\cdn.livebongda8.com\livebongda8\_next\static\chunks\app\[locale]\page-2da54f3097bce838.js" />
+    <None Include="wwwroot\css\cdn.livebongda8.com\livebongda8\_next\static\chunks\fd9d1056-e1959541a83ad093.js" />
+    <None Include="wwwroot\css\cdn.livebongda8.com\livebongda8\_next\static\chunks\main-app-4dc8d484787186df.js" />
+    <None Include="wwwroot\css\cdn.livebongda8.com\livebongda8\_next\static\chunks\polyfills-c67a75d1b6f99dc8.js" />
+    <None Include="wwwroot\css\cdn.livebongda8.com\livebongda8\_next\static\chunks\webpack-331d934fcfd86715.js" />
+    <None Include="wwwroot\css\cdn.livebongda8.com\livebongda8\_next\static\css\6ccb894d9b8c5a1b.css" />
+    <None Include="wwwroot\css\cdn.livebongda8.com\livebongda8\_next\static\css\70129e3326ca0a3a.css" />
+    <None Include="wwwroot\css\cdn.livebongda8.com\livebongda8\_next\static\css\a129f9aa0976b32b.css" />
+    <None Include="wwwroot\css\cdn.livebongda8.com\livebongda8\_next\static\css\f92bb3d067ae65ea.css" />
+    <None Include="wwwroot\css\cdn.livebongda8.com\livebongda8\_next\static\media\lichthidau.info.5ae4244d.png" />
+    <None Include="wwwroot\css\cdn.livebongda8.com\livebongda8\_next\static\media\logolivebongda9.dc0dfa7e.png" />
+    <None Include="wwwroot\css\styles.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+  </ItemGroup>
+
+</Project>
