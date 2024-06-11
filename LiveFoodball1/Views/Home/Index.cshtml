@@ -1,13 +1,325 @@
-﻿<div class="flex flex-col gap-6">
+﻿@{
+    ViewData["Title"] = "Home Page";
+    var liveStreamData = ViewData["LiveStreamData"];
+
+    dynamic jsonData = null;
+    if (liveStreamData != null)
+    {
+        jsonData = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(liveStreamData.ToString());
+    }
+    var isFirstMatch = true;
+}
+<div class="flex flex-col gap-6">
     <h1 class="hidden">Livebongda8</h1>
-    <div class="bg-black text-white">
-    <div class="max-w-[95vw] mx-auto md:container lg:container xl:container 2xl:container">
-        <div class="mt-[12px]"><h2 class="text-[14px] lg:text-[24px] xl:text-[24px] 2xl:text-[24px]">Trực tiếp Chinese Taipei vs Oman</h2>
-        <div class="my-6 flex w-[100%] gap-6 flex-col lg:flex-row xl:flex-row 2xl:flex-row">
-            <div class="mx-auto w-[100%] max-w-[1240px]"><div class="">
-                <div class="plyr plyr--full-ui plyr--video plyr--html5 plyr--fullscreen-enabled plyr--pip-supported plyr--paused">
-                <div class="plyr__controls"><button class="plyr__controls__item plyr__control" type="button" data-plyr="play" aria-pressed="false" aria-label="Play"><svg class="icon--pressed" aria-hidden="true" focusable="false"><use xlink:href="#plyr-pause"></use></svg><svg class="icon--not-pressed" aria-hidden="true" focusable="false"><use xlink:href="#plyr-play"></use></svg><span class="label--pressed plyr__sr-only">Pause</span><span class="label--not-pressed plyr__sr-only">Play</span></button><div class="plyr__controls__item plyr__progress__container">
-                    <div class="plyr__progress"><input data-plyr="seek" type="range" min="0" max="100" step="0.01" value="0" autocomplete="off" role="slider" aria-label="Seek" aria-valuemin="0" aria-valuemax="0" aria-valuenow="3.586968" id="plyr-seek-2299" aria-valuetext="00:03 of 00:00" style="--value: 0%;" seek-value="83.41801098097889"><progress class="plyr__progress__buffer" min="0" max="100" value="0" role="progressbar" aria-hidden="true">% buffered</progress><span class="plyr__tooltip">00:00</span></div></div><div class="plyr__controls__item plyr__time--current plyr__time" aria-label="Current time" role="timer">00:-3</div><div class="plyr__controls__item plyr__volume"><button type="button" class="plyr__control" data-plyr="mute" aria-pressed="false"><svg class="icon--pressed" aria-hidden="true" focusable="false"><use xlink:href="#plyr-muted"></use></svg><svg class="icon--not-pressed" aria-hidden="true" focusable="false"><use xlink:href="#plyr-volume"></use></svg><span class="label--pressed plyr__sr-only">Unmute</span><span class="label--not-pressed plyr__sr-only">Mute</span></button><input data-plyr="volume" type="range" min="0" max="1" step="0.05" value="1" autocomplete="off" role="slider" aria-label="Volume" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100" id="plyr-volume-2299" aria-valuetext="100.0%" style="--value: 100%;"></div><button class="plyr__controls__item plyr__control" type="button" data-plyr="captions" aria-pressed="false"><svg class="icon--pressed" aria-hidden="true" focusable="false"><use xlink:href="#plyr-captions-on"></use></svg><svg class="icon--not-pressed" aria-hidden="true" focusable="false"><use xlink:href="#plyr-captions-off"></use></svg><span class="label--pressed plyr__sr-only">Disable captions</span><span class="label--not-pressed plyr__sr-only">Enable captions</span></button><div class="plyr__controls__item plyr__menu"><button aria-haspopup="true" aria-controls="plyr-settings-2299" aria-expanded="false" type="button" class="plyr__control" data-plyr="settings" aria-pressed="false"><svg aria-hidden="true" focusable="false"><use xlink:href="#plyr-settings"></use></svg><span class="plyr__sr-only">Settings</span></button><div class="plyr__menu__container" id="plyr-settings-2299" hidden=""><div><div id="plyr-settings-2299-home"><div role="menu"><button data-plyr="settings" type="button" class="plyr__control plyr__control--forward" role="menuitem" aria-haspopup="true" hidden=""><span>Captions<span class="plyr__menu__value">Disabled</span></span></button><button data-plyr="settings" type="button" class="plyr__control plyr__control--forward" role="menuitem" aria-haspopup="true" hidden=""><span>Quality<span class="plyr__menu__value">undefined</span></span></button><button data-plyr="settings" type="button" class="plyr__control plyr__control--forward" role="menuitem" aria-haspopup="true"><span>Speed<span class="plyr__menu__value">Normal</span></span></button></div></div><div id="plyr-settings-2299-captions" hidden=""><button type="button" class="plyr__control plyr__control--back"><span aria-hidden="true">Captions</span><span class="plyr__sr-only">Go back to previous menu</span></button><div role="menu"></div></div><div id="plyr-settings-2299-quality" hidden=""><button type="button" class="plyr__control plyr__control--back"><span aria-hidden="true">Quality</span><span class="plyr__sr-only">Go back to previous menu</span></button><div role="menu"></div></div><div id="plyr-settings-2299-speed" hidden=""><button type="button" class="plyr__control plyr__control--back"><span aria-hidden="true">Speed</span><span class="plyr__sr-only">Go back to previous menu</span></button><div role="menu"><button data-plyr="speed" type="button" role="menuitemradio" class="plyr__control" aria-checked="false" value="0.5"><span>0.5×</span></button><button data-plyr="speed" type="button" role="menuitemradio" class="plyr__control" aria-checked="false" value="0.75"><span>0.75×</span></button><button data-plyr="speed" type="button" role="menuitemradio" class="plyr__control" aria-checked="true" value="1"><span>Normal</span></button><button data-plyr="speed" type="button" role="menuitemradio" class="plyr__control" aria-checked="false" value="1.25"><span>1.25×</span></button><button data-plyr="speed" type="button" role="menuitemradio" class="plyr__control" aria-checked="false" value="1.5"><span>1.5×</span></button><button data-plyr="speed" type="button" role="menuitemradio" class="plyr__control" aria-checked="false" value="1.75"><span>1.75×</span></button><button data-plyr="speed" type="button" role="menuitemradio" class="plyr__control" aria-checked="false" value="2"><span>2×</span></button><button data-plyr="speed" type="button" role="menuitemradio" class="plyr__control" aria-checked="false" value="4"><span>4×</span></button></div></div></div></div></div><button class="plyr__controls__item plyr__control" type="button" data-plyr="pip" aria-pressed="false"><svg aria-hidden="true" focusable="false"><use xlink:href="#plyr-pip"></use></svg><span class="plyr__sr-only">PIP</span></button><button class="plyr__controls__item plyr__control" type="button" data-plyr="fullscreen" aria-pressed="false"><svg class="icon--pressed" aria-hidden="true" focusable="false"><use xlink:href="#plyr-exit-fullscreen"></use></svg><svg class="icon--not-pressed" aria-hidden="true" focusable="false"><use xlink:href="#plyr-enter-fullscreen"></use></svg><span class="label--pressed plyr__sr-only">Exit fullscreen</span><span class="label--not-pressed plyr__sr-only">Enter fullscreen</span></button></div><div class="plyr__video-wrapper"><video id="l7oqdeho47o3r51" autoplay="" crossorigin="anonymous" playsinline="" type="" src="blob:https://livebongda8.com/e952c6c9-2efe-41c3-b49d-3d03dce8a519"></video><div class="plyr__poster"></div></div><div class="plyr__captions" dir="auto"></div><button type="button" class="plyr__control plyr__control--overlaid" data-plyr="play" aria-pressed="false" aria-label="Play"><svg aria-hidden="true" focusable="false"><use xlink:href="#plyr-play"></use></svg><span class="plyr__sr-only">Play</span></button></div><div class="bg-white p-2 rounded-b-[10px] flex flex-col gap-2"><div class="flex gap-4 items-center"><img title="BLV Cafe Thể Thao" src="https://cdn.cafethethao.com/origin/20240605/logo-cafe-the-thao-png-vuong.png" alt="Hình ảnh BLV Cafe Thể Thao" class="rounded-[50%] w-[35px] h-[35px] object-cover" width="50" height="50" loading="lazy"><div class="flex gap-2 items-center"><span class="lg:text-[14px] xl:text-[14px] 2xl:text-[14px] text-[--match-2d] font-semibold text-[12px]">BLV Cafe Thể Thao</span><span data-feather="mic" class="icon-microphone mic-flash text-[--match-live]"></span></div></div><div class="flex flex-col gap-3"><div class="flex justify-between gap-2 pt-[12px] "><div class="flex gap-2"><button class="flex items-center gap-1 rounded-[--border-radius] px-[10px] py-[5px] shadow-md hover:bg-[--red] bg-[--violet] text-white"><div class=" flex items-center justify-center rounded-[50%] bg-[white] text-[--violet] p-[3px]"><span style="font-size: 10px" data-feather="play" class="icon-alo-icon-play text-center"></span></div><span class="text-[12px] lg:text-[14px] xl:text-[14px] 2xl:text-[14px]">Link 1</span></button></div><button class="flex items-center gap-1 text-black"><span data-feather="copy" class="icon-btn-copy text-[14px] md:text-[16px] lg:text-[16px] xl:text-[16px] 2xl:text-[16px] "></span><span class="xs:text-[12px] sm:text-[12px] md:text-[12px]">Sao chép</span></button></div></div></div></div><div class="hidden relative text-white"><div class="lazyload-wrapper "><img title="Hình ảnh trận đấu sắp diễn ra" src="https://cdn.livebongda8.com/livebongda8/_next/static/media/match_incoming.3c5baa38.webp" alt="Hình ảnh Hình ảnh trận đấu sắp diễn ra" class="w-[100%] h-auto object-cover" width="961" height="401" loading="lazy" effect="blur"></div><div class="absolute left-0 top-0 h-[100%] w-[100%]"><div class="mx-auto flex h-[100%] flex-col items-center justify-center gap-4 p-6"><h2 class="truncate text-[18px] font-bold uppercase lg:text-[18px] xl:text-[24px] 2xl:text-[28px]">FIFA World Cup qualification (AFC)</h2><div class="flex"><div class="flex items-center gap-2"><div class="flex w-[120px] flex-col items-center justify-center gap-2 overflow-hidden lg:w-[200px] xl:w-[200px] 2xl:w-[200px]"><div class="lazyload-wrapper "><img title="Chinese Taipei" src="https://cdn.livebongda8.com/100x100_min/football/team/eda990fc13e3b1290aaf2536b59a7a20.png" alt="Hình ảnh Chinese Taipei" class="h-[40px] w-[40px] object-contain lg:h-[70px] lg:w-[70px] xl:h-[70px] xl:w-[70px] 2xl:h-[70px] 2xl:w-[70px]" width="100" height="100" loading="lazy" effect="blur"></div><h4 title="Chinese Taipei" class="mx-auto w-fit max-w-[120px] items-center truncate text-center text-[14px] lg:max-w-[200px] lg:text-[16px] xl:max-w-[200px] xl:text-[20px] 2xl:max-w-[200px] 2xl:text-[24px]">Chinese Taipei</h4></div><div class="flex flex-col items-center"><div class="text-center text-[12px] lg:text-[16px] xl:text-[18px] 2xl:text-[22px]">18:00 - 6/6/2024</div><div class="text-[24px] font-bold uppercase lg:text-[38px] xl:text-[48px] 2xl:text-[50px]">vs</div><div class="text-[12px] text-[--yellow] lg:text-[16px] xl:text-[18px] 2xl:text-[22px]">Hiệp 2</div></div><div class="flex w-[120px] flex-col items-center justify-center gap-2 overflow-hidden lg:w-[200px] xl:w-[200px] 2xl:w-[200px]"><div class="lazyload-wrapper "><img title="Oman" src="https://cdn.livebongda8.com/100x100_min/football/team/500739868ce9f7f0857260404eab4d41.png" alt="Hình ảnh Oman" class="h-[40px] w-[40px] object-contain lg:h-[70px] lg:w-[70px] xl:h-[70px] xl:w-[70px] 2xl:h-[70px] 2xl:w-[70px]" width="100" height="100" loading="lazy" effect="blur"></div><h4 title="Oman" class="mx-auto w-fit max-w-[120px] items-center truncate text-center text-[14px] lg:max-w-[200px] lg:text-[16px] xl:max-w-[200px] xl:text-[20px] 2xl:max-w-[200px] 2xl:text-[24px]">Oman</h4></div></div></div></div></div></div></div><div class="block w-[100%] max-w-[400px]"><div class="w-full flex justify-between gap-3 mb-[8px]"><div class="w-full text-center bg-red-600 text-white rounded cursor-pointer py-[2px] hover:bg-violet-600 hover:text-white">Trò chuyện</div><div class="w-full text-center bg-white text-black rounded cursor-pointer py-[2px] hover:bg-violet-600 hover:text-white">Trực tiếp</div></div><div class="comments_blocks z-[1] flex h-[95%] flex-col justify-between rounded-[5px] bg-white"><div class="flex flex-row items-center justify-between border-b-[1px] py-2 pl-3 text-xl font-medium"><div class="text-lg">Trò chuyện</div><div class="flex items-center gap-2 rounded-s-full bg-[--match-2d] p-2"><span class="text-[--white]">68</span><span data-feather="eye" class="icon-eye text-[--white]"></span></div></div><div id="chatContainer" class="flex flex-col justify-self-end overflow-y-auto p-3 h-[300px] sm:h-[300px] md:h-[300px] lg:h-[350px] xl:h-[380px] 2xl:h-[450px]"><div class="items-center justify-center rounded-lg bg-[#8B5EC50D] px-2 py-2"><span class="comment_content-message text-balance " style="color: rgb(158, 83, 252); font-size: 12px;">Chào mừng các bạn đến với kênh trực tiếp của Livebongda8 cam kết thiết lập một môi trường phát trực tuyến chuyên nghiệp và thân thiện. Mọi nội dung lạm dụng, thô tục hoặc bạo lực sẽ bị chặn.</span></div></div><div class="comment_editor flex items-center gap-2 px-2 pb-6 pt-2"><a class="comment-login font-semibold" href="/dang-nhap" previewlistener="true">Vui lòng đăng nhập để có thể bình luận</a></div></div></div></div></div></div></div>
+    @if (jsonData.result.matchesHot.Count > 0)
+    {
+        @foreach (dynamic match in jsonData.result.matchesHot)
+        {
+            <div class="bg-black text-white">
+                <div class="max-w-[95vw] mx-auto md:container lg:container xl:container 2xl:container">
+                    <div class="mt-[12px]">
+                        <h2 class="text-[14px] lg:text-[24px] xl:text-[24px] 2xl:text-[24px]">@match.title</h2>
+                        <div class="my-6 flex w-[100%] gap-6 flex-col lg:flex-row xl:flex-row 2xl:flex-row">
+                            <div class="mx-auto w-[100%] max-w-[1240px]">
+                                <div class="">
+                                    <div class="plyr plyr--full-ui plyr--video plyr--html5 plyr--fullscreen-enabled plyr--pip-supported plyr--paused">
+                                        <div class="plyr__controls">
+                                            <button class="plyr__controls__item plyr__control" type="button" data-plyr="play" aria-pressed="false" aria-label="Play">
+                                                <svg class="icon--pressed" aria-hidden="true" focusable="false"><use xlink:href="#plyr-pause"></use></svg>
+                                                <svg class="icon--not-pressed" aria-hidden="true" focusable="false"><use xlink:href="#plyr-play"></use></svg>
+                                                <span class="label--pressed plyr__sr-only">Pause</span><span class="label--not-pressed plyr__sr-only">Play</span>
+                                            </button><div class="plyr__controls__item plyr__progress__container">
+                                                <div class="plyr__progress">
+                                                    <input data-plyr="seek" type="range" min="0" max="100" step="0.01" value="0" autocomplete="off" role="slider" aria-label="Seek" aria-valuemin="0" aria-valuemax="0" aria-valuenow="3.586968" id="plyr-seek-2299" aria-valuetext="00:03 of 00:00" style="--value: 0%;" seek-value="83.41801098097889">
+                                                    <progress class="plyr__progress__buffer" min="0" max="100" value="0" role="progressbar" aria-hidden="true">% buffered</progress><span class="plyr__tooltip">00:00</span>
+                                                </div>
+                                            </div>
+                                            <div class="plyr__controls__item plyr__time--current plyr__time" aria-label="Current time" role="timer">00:-3</div>
+                                            <div class="plyr__controls__item plyr__volume">
+                                                <button type="button" class="plyr__control" data-plyr="mute" aria-pressed="false"><svg class="icon--pressed" aria-hidden="true" focusable="false"><use xlink:href="#plyr-muted"></use></svg>
+                                                    <svg class="icon--not-pressed" aria-hidden="true" focusable="false"><use xlink:href="#plyr-volume"></use></svg>
+                                                    <span class="label--pressed plyr__sr-only">Unmute</span><span class="label--not-pressed plyr__sr-only">Mute</span></button>
+                                                <input data-plyr="volume" type="range" min="0" max="1" step="0.05" value="1" autocomplete="off" role="slider" aria-label="Volume" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100" id="plyr-volume-2299" aria-valuetext="100.0%" style="--value: 100%;">
+                                            </div><button class="plyr__controls__item plyr__control" type="button" data-plyr="captions" aria-pressed="false">
+                                                <svg class="icon--pressed" aria-hidden="true" focusable="false"><use xlink:href="#plyr-captions-on"></use></svg><svg class="icon--not-pressed" aria-hidden="true" focusable="false"><use xlink:href="#plyr-captions-off"></use></svg>
+                                                <span class="label--pressed plyr__sr-only">Disable captions</span><span class="label--not-pressed plyr__sr-only">Enable captions</span>
+                                            </button><div class="plyr__controls__item plyr__menu">
+                                                <button aria-haspopup="true" aria-controls="plyr-settings-2299" aria-expanded="false" type="button" class="plyr__control" data-plyr="settings" aria-pressed="false">
+                                                    <svg aria-hidden="true" focusable="false">
+                                                        <use xlink:href="#plyr-settings"></use></svg><span class="plyr__sr-only">Settings</span></button><div class="plyr__menu__container" id="plyr-settings-2299" hidden="">
+                                                    <div>
+                                                        <div id="plyr-settings-2299-home">
+                                                            <div role="menu">
+                                                                <button data-plyr="settings" type="button" class="plyr__control plyr__control--forward" role="menuitem" aria-haspopup="true" hidden="">
+                                                                    <span>Captions<span class="plyr__menu__value">Disabled</span></span>
+                                                                </button><button data-plyr="settings" type="button" class="plyr__control plyr__control--forward" role="menuitem" aria-haspopup="true" hidden=""><span>Quality<span class="plyr__menu__value">undefined</span></span></button>
+                                                                <button data-plyr="settings" type="button" class="plyr__control plyr__control--forward" role="menuitem" aria-haspopup="true"><span>Speed<span class="plyr__menu__value">Normal</span></span></button>
+                                                            </div>
+                                                        </div><div id="plyr-settings-2299-captions" hidden="">
+                                                            <button type="button" class="plyr__control plyr__control--back"><span aria-hidden="true">Captions</span><span class="plyr__sr-only">Go back to previous menu</span></button>
+                                                            <div role="menu"></div>
+                                                        </div><div id="plyr-settings-2299-quality" hidden=""><button type="button" class="plyr__control plyr__control--back"><span aria-hidden="true">Quality</span><span class="plyr__sr-only">Go back to previous menu</span></button><div role="menu"></div></div><div id="plyr-settings-2299-speed" hidden="">
+                                                            <button type="button" class="plyr__control plyr__control--back"><span aria-hidden="true">Speed</span><span class="plyr__sr-only">Go back to previous menu</span></button><div role="menu">
+                                                                <button data-plyr="speed" type="button" role="menuitemradio" class="plyr__control" aria-checked="false" value="0.5"><span>0.5×</span></button>
+                                                                <button data-plyr="speed" type="button" role="menuitemradio" class="plyr__control" aria-checked="false" value="0.75"><span>0.75×</span></button>
+                                                                <button data-plyr="speed" type="button" role="menuitemradio" class="plyr__control" aria-checked="true" value="1"><span>Normal</span></button>
+                                                                <button data-plyr="speed" type="button" role="menuitemradio" class="plyr__control" aria-checked="false" value="1.25"><span>1.25×</span></button>
+                                                                <button data-plyr="speed" type="button" role="menuitemradio" class="plyr__control" aria-checked="false" value="1.5"><span>1.5×</span></button>
+                                                                <button data-plyr="speed" type="button" role="menuitemradio" class="plyr__control" aria-checked="false" value="1.75"><span>1.75×</span></button>
+                                                                <button data-plyr="speed" type="button" role="menuitemradio" class="plyr__control" aria-checked="false" value="2"><span>2×</span></button>
+                                                                <button data-plyr="speed" type="button" role="menuitemradio" class="plyr__control" aria-checked="false" value="4"><span>4×</span></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button class="plyr__controls__item plyr__control" type="button" data-plyr="pip" aria-pressed="false"><svg aria-hidden="true" focusable="false"><use xlink:href="#plyr-pip"></use></svg><span class="plyr__sr-only">PIP</span></button>
+                                            <button class="plyr__controls__item plyr__control" type="button" data-plyr="fullscreen" aria-pressed="false">
+                                                <svg class="icon--pressed" aria-hidden="true" focusable="false"><use xlink:href="#plyr-exit-fullscreen"></use></svg><svg class="icon--not-pressed" aria-hidden="true" focusable="false"><use xlink:href="#plyr-enter-fullscreen"></use></svg>
+                                                <span class="label--pressed plyr__sr-only">Exit fullscreen</span><span class="label--not-pressed plyr__sr-only">Enter fullscreen</span>
+                                            </button>
+                                        </div><div class="plyr__video-wrapper">
+                                            <video id="l7oqdeho47o3r51" autoplay="" crossorigin="anonymous" playsinline="" type="" src="blob:@match.match.pushurl1"></video><div class="plyr__poster"></div>
+                                        </div><div class="plyr__captions" dir="auto"></div><button type="button" class="plyr__control plyr__control--overlaid" data-plyr="play" aria-pressed="false" aria-label="Play"><svg aria-hidden="true" focusable="false"><use xlink:href="#plyr-play"></use></svg><span class="plyr__sr-only">Play</span></button>
+                                    </div>
+
+                                    @* Giao diện phần bình luận *@
+                                    <div class="bg-white p-2 rounded-b-[10px] flex flex-col gap-2">
+                                        <div class="flex gap-4 items-center">
+                                            <img title="@match.commentator.name" src="@match.commentator.photo" alt="@match.commentator.name" class="rounded-[50%] w-[35px] h-[35px] object-cover" width="50" height="50" loading="lazy"><div class="flex gap-2 items-center">
+                                                <span class="lg:text-[14px] xl:text-[14px] 2xl:text-[14px] text-[--match-2d] font-semibold text-[12px]">@match.commentator.name</span><span data-feather="mic" class="icon-microphone mic-flash text-[--match-live]"></span>
+                                            </div>
+                                        </div>
+                                        <div class="flex flex-col gap-3">
+                                            <div class="flex justify-between gap-2 pt-[12px] ">
+                                                <div class="flex gap-2">
+                                                    <button class="flex items-center gap-1 rounded-[--border-radius] px-[10px] py-[5px] shadow-md hover:bg-[--red] bg-[--violet] text-white">
+                                                        <div class=" flex items-center justify-center rounded-[50%] bg-[white] text-[--violet] p-[3px]">
+                                                            <span style="font-size: 10px" data-feather="play" class="icon-alo-icon-play text-center"></span>
+                                                        </div><span class="text-[12px] lg:text-[14px] xl:text-[14px] 2xl:text-[14px]">Link 1</span>
+                                                    </button>
+                                                </div>
+                                                <button class="flex items-center gap-1 text-black"><span data-feather="copy" class="icon-btn-copy text-[14px] md:text-[16px] lg:text-[16px] xl:text-[16px] 2xl:text-[16px] "></span><span class="xs:text-[12px] sm:text-[12px] md:text-[12px]">Sao chép</span></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                @* Dữ liệu hidden *@
+                                <div class="hidden relative text-white">
+                                    <div class="lazyload-wrapper ">
+                                        <img title="Hình ảnh trận đấu sắp diễn ra" src="@match.match.competition.logo" alt="Hình ảnh Hình ảnh trận đấu sắp diễn ra" class="w-[100%] h-auto object-cover" width="961" height="401" loading="lazy" effect="blur">
+                                    </div>
+                                    <div class="absolute left-0 top-0 h-[100%] w-[100%]">
+                                        <div class="mx-auto flex h-[100%] flex-col items-center justify-center gap-4 p-6">
+                                            <h2 class="truncate text-[18px] font-bold uppercase lg:text-[18px] xl:text-[24px] 2xl:text-[28px]">@match.match.competition.name_vi</h2><div class="flex">
+                                                <div class="flex items-center gap-2">
+                                                    <div class="flex w-[120px] flex-col items-center justify-center gap-2 overflow-hidden lg:w-[200px] xl:w-[200px] 2xl:w-[200px]">
+                                                        <div class="lazyload-wrapper"><img title="@match.match.home_team.name" src="@match.match.home_team.logo" alt="Hình ảnh @match.match.home_team.name" class="h-[40px] w-[40px] object-contain lg:h-[70px] lg:w-[70px] xl:h-[70px] xl:w-[70px] 2xl:h-[70px] 2xl:w-[70px]" width="100" height="100" loading="lazy" effect="blur"></div>
+                                                        <h4 title="@match.match.home_team.name" class="mx-auto w-fit max-w-[120px] items-center truncate text-center text-[14px] lg:max-w-[200px] lg:text-[16px] xl:max-w-[200px] xl:text-[20px] 2xl:max-w-[200px] 2xl:text-[24px]">@match.match.home_team.name</h4>
+                                                    </div>
+                                                    <div class="flex flex-col items-center">
+                                                        <div class="text-center text-[12px] lg:text-[16px] xl:text-[18px] 2xl:text-[22px]">18:00 - 6/6/2024</div>
+                                                        <div class="text-[24px] font-bold uppercase lg:text-[38px] xl:text-[48px] 2xl:text-[50px]">vs</div><div class="text-[12px] text-[--yellow] lg:text-[16px] xl:text-[18px] 2xl:text-[22px]">Hiệp 2</div>
+                                                    </div>
+                                                    <div class="flex w-[120px] flex-col items-center justify-center gap-2 overflow-hidden lg:w-[200px] xl:w-[200px] 2xl:w-[200px]">
+                                                        <div class="lazyload-wrapper ">
+                                                            <img title="@match.match.away_team.name" src="@match.match.away_team.logo" alt="Hình ảnh @match.match.away_team.name" class="h-[40px] w-[40px] object-contain lg:h-[70px] lg:w-[70px] xl:h-[70px] xl:w-[70px] 2xl:h-[70px] 2xl:w-[70px]" width="100" height="100" loading="lazy" effect="blur">
+                                                        </div>
+                                                        <h4 title="@match.match.away_team.name" class="mx-auto w-fit max-w-[120px] items-center truncate text-center text-[14px] lg:max-w-[200px] lg:text-[16px] xl:max-w-[200px] xl:text-[20px] 2xl:max-w-[200px] 2xl:text-[24px]">@match.match.away_team.name</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="block w-[100%] max-w-[400px]">
+                                <div class="w-full flex justify-between gap-3 mb-[8px]">
+                                    <div class="w-full text-center bg-red-600 text-white rounded cursor-pointer py-[2px] hover:bg-violet-600 hover:text-white">Trò chuyện</div><div class="w-full text-center bg-white text-black rounded cursor-pointer py-[2px] hover:bg-violet-600 hover:text-white">Trực tiếp</div>
+                                </div>
+                                <div class="comments_blocks z-[1] flex h-[95%] flex-col justify-between rounded-[5px] bg-white">
+                                    <div class="flex flex-row items-center justify-between border-b-[1px] py-2 pl-3 text-xl font-medium">
+                                        <div class="text-lg">Trò chuyện</div><div class="flex items-center gap-2 rounded-s-full bg-[--match-2d] p-2"><span class="text-[--white]">@match.match.viewcount</span><span data-feather="eye" class="icon-eye text-[--white]"></span></div>
+                                    </div>
+                                    <div id="chatContainer" class="flex flex-col justify-self-end overflow-y-auto p-3 h-[300px] sm:h-[300px] md:h-[300px] lg:h-[350px] xl:h-[380px] 2xl:h-[450px]">
+                                        <div class="items-center justify-center rounded-lg bg-[#8B5EC50D] px-2 py-2">
+                                            <span class="comment_content-message text-balance " style="color: rgb(158, 83, 252); font-size: 12px;">Chào mừng các bạn đến với kênh trực tiếp của Livebongda8 cam kết thiết lập một môi trường phát trực tuyến chuyên nghiệp và thân thiện. Mọi nội dung lạm dụng, thô tục hoặc bạo lực sẽ bị chặn.</span>
+                                        </div>
+                                    </div>
+                                    <div class="comment_editor flex items-center gap-2 px-2 pb-6 pt-2">
+                                        <a class="comment-login font-semibold" href="/dang-nhap" previewlistener="true">Vui lòng đăng nhập để có thể bình luận</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+
+    @if (jsonData.result.matchesHot.Count == 0)
+    {
+        @foreach (dynamic match in jsonData.result.matchesLive)
+        {
+            if (isFirstMatch)
+            {
+                <div class="bg-black text-white">
+                    <div class="max-w-[95vw] mx-auto md:container lg:container xl:container 2xl:container">
+                    <div class="mt-[12px]">
+                        <h2 class="text-[14px] lg:text-[24px] xl:text-[24px] 2xl:text-[24px]">@match.title</h2>
+                        <div class="my-6 flex w-[100%] gap-6 flex-col lg:flex-row xl:flex-row 2xl:flex-row">
+                            <div class="mx-auto w-[100%] max-w-[1240px]">
+                                <div class="">
+                                        <video id="player" controls>
+                                            <source src="https://livebongda8.com/2c7e4bba-cadc-4aea-9a90-4c96c9248656" type="video/mp4">
+                                            <!-- Nếu trình duyệt không hỗ trợ định dạng video -->
+                                            <p>Your browser doesn't support HTML5 video. Here is a <a href="video.mp4">link to the video</a> instead.</p>
+                                        </video>
+                                    @* <div class="plyr plyr--full-ui plyr--video plyr--html5 plyr--fullscreen-enabled plyr--pip-supported plyr--paused">
+                                        <div class="plyr__controls">
+                                            <button class="plyr__controls__item plyr__control" type="button" data-plyr="play" aria-pressed="false" aria-label="Play">
+                                                <svg class="icon--pressed" aria-hidden="true" focusable="false"><use xlink:href="#plyr-pause"></use></svg>
+                                                <svg class="icon--not-pressed" aria-hidden="true" focusable="false"><use xlink:href="#plyr-play"></use></svg>
+                                                <span class="label--pressed plyr__sr-only">Pause</span><span class="label--not-pressed plyr__sr-only">Play</span>
+                                            </button><div class="plyr__controls__item plyr__progress__container">
+                                                <div class="plyr__progress">
+                                                    <input data-plyr="seek" type="range" min="0" max="100" step="0.01" value="0" autocomplete="off" role="slider" aria-label="Seek" aria-valuemin="0" aria-valuemax="0" aria-valuenow="3.586968" id="plyr-seek-2299" aria-valuetext="00:03 of 00:00" style="--value: 0%;" seek-value="83.41801098097889">
+                                                    <progress class="plyr__progress__buffer" min="0" max="100" value="0" role="progressbar" aria-hidden="true">% buffered</progress><span class="plyr__tooltip">00:00</span>
+                                                </div>
+                                            </div>
+                                            <div class="plyr__controls__item plyr__time--current plyr__time" aria-label="Current time" role="timer">00:-3</div>
+                                            <div class="plyr__controls__item plyr__volume">
+                                                <button type="button" class="plyr__control" data-plyr="mute" aria-pressed="false">
+                                                    <svg class="icon--pressed" aria-hidden="true" focusable="false"><use xlink:href="#plyr-muted"></use></svg>
+                                                    <svg class="icon--not-pressed" aria-hidden="true" focusable="false"><use xlink:href="#plyr-volume"></use></svg>
+                                                    <span class="label--pressed plyr__sr-only">Unmute</span><span class="label--not-pressed plyr__sr-only">Mute</span>
+                                                </button>
+                                                <input data-plyr="volume" type="range" min="0" max="1" step="0.05" value="1" autocomplete="off" role="slider" aria-label="Volume" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100" id="plyr-volume-2299" aria-valuetext="100.0%" style="--value: 100%;">
+                                            </div><button class="plyr__controls__item plyr__control" type="button" data-plyr="captions" aria-pressed="false">
+                                                <svg class="icon--pressed" aria-hidden="true" focusable="false"><use xlink:href="#plyr-captions-on"></use></svg><svg class="icon--not-pressed" aria-hidden="true" focusable="false"><use xlink:href="#plyr-captions-off"></use></svg>
+                                                <span class="label--pressed plyr__sr-only">Disable captions</span><span class="label--not-pressed plyr__sr-only">Enable captions</span>
+                                            </button><div class="plyr__controls__item plyr__menu">
+                                                <button aria-haspopup="true" aria-controls="plyr-settings-2299" aria-expanded="false" type="button" class="plyr__control" data-plyr="settings" aria-pressed="false">
+                                                    <svg aria-hidden="true" focusable="false">
+                                                        <use xlink:href="#plyr-settings"></use>
+                                                    </svg><span class="plyr__sr-only">Settings</span>
+                                                </button><div class="plyr__menu__container" id="plyr-settings-2299" hidden="">
+                                                    <div>
+                                                        <div id="plyr-settings-2299-home">
+                                                            <div role="menu">
+                                                                <button data-plyr="settings" type="button" class="plyr__control plyr__control--forward" role="menuitem" aria-haspopup="true" hidden="">
+                                                                    <span>Captions<span class="plyr__menu__value">Disabled</span></span>
+                                                                </button><button data-plyr="settings" type="button" class="plyr__control plyr__control--forward" role="menuitem" aria-haspopup="true" hidden=""><span>Quality<span class="plyr__menu__value">undefined</span></span></button>
+                                                                <button data-plyr="settings" type="button" class="plyr__control plyr__control--forward" role="menuitem" aria-haspopup="true"><span>Speed<span class="plyr__menu__value">Normal</span></span></button>
+                                                            </div>
+                                                        </div><div id="plyr-settings-2299-captions" hidden="">
+                                                            <button type="button" class="plyr__control plyr__control--back"><span aria-hidden="true">Captions</span><span class="plyr__sr-only">Go back to previous menu</span></button>
+                                                            <div role="menu"></div>
+                                                        </div><div id="plyr-settings-2299-quality" hidden=""><button type="button" class="plyr__control plyr__control--back"><span aria-hidden="true">Quality</span><span class="plyr__sr-only">Go back to previous menu</span></button><div role="menu"></div></div><div id="plyr-settings-2299-speed" hidden="">
+                                                            <button type="button" class="plyr__control plyr__control--back"><span aria-hidden="true">Speed</span><span class="plyr__sr-only">Go back to previous menu</span></button><div role="menu">
+                                                                <button data-plyr="speed" type="button" role="menuitemradio" class="plyr__control" aria-checked="false" value="0.5"><span>0.5×</span></button>
+                                                                <button data-plyr="speed" type="button" role="menuitemradio" class="plyr__control" aria-checked="false" value="0.75"><span>0.75×</span></button>
+                                                                <button data-plyr="speed" type="button" role="menuitemradio" class="plyr__control" aria-checked="true" value="1"><span>Normal</span></button>
+                                                                <button data-plyr="speed" type="button" role="menuitemradio" class="plyr__control" aria-checked="false" value="1.25"><span>1.25×</span></button>
+                                                                <button data-plyr="speed" type="button" role="menuitemradio" class="plyr__control" aria-checked="false" value="1.5"><span>1.5×</span></button>
+                                                                <button data-plyr="speed" type="button" role="menuitemradio" class="plyr__control" aria-checked="false" value="1.75"><span>1.75×</span></button>
+                                                                <button data-plyr="speed" type="button" role="menuitemradio" class="plyr__control" aria-checked="false" value="2"><span>2×</span></button>
+                                                                <button data-plyr="speed" type="button" role="menuitemradio" class="plyr__control" aria-checked="false" value="4"><span>4×</span></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button class="plyr__controls__item plyr__control" type="button" data-plyr="pip" aria-pressed="false"><svg aria-hidden="true" focusable="false"><use xlink:href="#plyr-pip"></use></svg><span class="plyr__sr-only">PIP</span></button>
+                                            <button class="plyr__controls__item plyr__control" type="button" data-plyr="fullscreen" aria-pressed="false">
+                                                <svg class="icon--pressed" aria-hidden="true" focusable="false"><use xlink:href="#plyr-exit-fullscreen"></use></svg><svg class="icon--not-pressed" aria-hidden="true" focusable="false"><use xlink:href="#plyr-enter-fullscreen"></use></svg>
+                                                <span class="label--pressed plyr__sr-only">Exit fullscreen</span><span class="label--not-pressed plyr__sr-only">Enter fullscreen</span>
+                                            </button>
+                                        </div><div class="plyr__video-wrapper">
+                                            <video id="l7oqdeho47o3r51" autoplay="" crossorigin="anonymous" playsinline="" type="" src="blob:@match.match.pushurl1"></video><div class="plyr__poster"></div>
+                                        </div><div class="plyr__captions" dir="auto"></div><button type="button" class="plyr__control plyr__control--overlaid" data-plyr="play" aria-pressed="false" aria-label="Play"><svg aria-hidden="true" focusable="false"><use xlink:href="#plyr-play"></use></svg><span class="plyr__sr-only">Play</span></button>
+                                    </div> *@
+
+                                    @* Giao diện phần bình luận *@
+                                    <div class="bg-white p-2 rounded-b-[10px] flex flex-col gap-2">
+                                        <div class="flex gap-4 items-center">
+                                            <img title="@match.commentator.name" src="@match.commentator.photo" alt="@match.commentator.name" class="rounded-[50%] w-[35px] h-[35px] object-cover" width="50" height="50" loading="lazy"><div class="flex gap-2 items-center">
+                                                <span class="lg:text-[14px] xl:text-[14px] 2xl:text-[14px] text-[--match-2d] font-semibold text-[12px]">@match.commentator.name</span><span data-feather="mic" class="icon-microphone mic-flash text-[--match-live]"></span>
+                                            </div>
+                                        </div>
+                                        <div class="flex flex-col gap-3">
+                                            <div class="flex justify-between gap-2 pt-[12px] ">
+                                                <div class="flex gap-2">
+                                                    <button class="flex items-center gap-1 rounded-[--border-radius] px-[10px] py-[5px] shadow-md hover:bg-[--red] bg-[--violet] text-white">
+                                                        <div class=" flex items-center justify-center rounded-[50%] bg-[white] text-[--violet] p-[3px]">
+                                                            <span style="font-size: 10px" data-feather="play" class="icon-alo-icon-play text-center"></span>
+                                                        </div><span class="text-[12px] lg:text-[14px] xl:text-[14px] 2xl:text-[14px]">Link 1</span>
+                                                    </button>
+                                                </div>
+                                                <button class="flex items-center gap-1 text-black"><span data-feather="copy" class="icon-btn-copy text-[14px] md:text-[16px] lg:text-[16px] xl:text-[16px] 2xl:text-[16px] "></span><span class="xs:text-[12px] sm:text-[12px] md:text-[12px]">Sao chép</span></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                @* Dữ liệu hidden *@
+                                <div class="hidden relative text-white">
+                                    <div class="lazyload-wrapper ">
+                                        <img title="Hình ảnh trận đấu sắp diễn ra" src="@match.match.competition.logo" alt="Hình ảnh Hình ảnh trận đấu sắp diễn ra" class="w-[100%] h-auto object-cover" width="961" height="401" loading="lazy" effect="blur">
+                                    </div>
+                                    <div class="absolute left-0 top-0 h-[100%] w-[100%]">
+                                        <div class="mx-auto flex h-[100%] flex-col items-center justify-center gap-4 p-6">
+                                            <h2 class="truncate text-[18px] font-bold uppercase lg:text-[18px] xl:text-[24px] 2xl:text-[28px]">@match.match.competition.name_vi</h2><div class="flex">
+                                                <div class="flex items-center gap-2">
+                                                    <div class="flex w-[120px] flex-col items-center justify-center gap-2 overflow-hidden lg:w-[200px] xl:w-[200px] 2xl:w-[200px]">
+                                                        <div class="lazyload-wrapper"><img title="@match.match.home_team.name" src="@match.match.home_team.logo" alt="Hình ảnh @match.match.home_team.name" class="h-[40px] w-[40px] object-contain lg:h-[70px] lg:w-[70px] xl:h-[70px] xl:w-[70px] 2xl:h-[70px] 2xl:w-[70px]" width="100" height="100" loading="lazy" effect="blur"></div>
+                                                        <h4 title="@match.match.home_team.name" class="mx-auto w-fit max-w-[120px] items-center truncate text-center text-[14px] lg:max-w-[200px] lg:text-[16px] xl:max-w-[200px] xl:text-[20px] 2xl:max-w-[200px] 2xl:text-[24px]">@match.match.home_team.name</h4>
+                                                    </div>
+                                                    <div class="flex flex-col items-center">
+                                                        <div class="text-center text-[12px] lg:text-[16px] xl:text-[18px] 2xl:text-[22px]">18:00 - 6/6/2024</div>
+                                                        <div class="text-[24px] font-bold uppercase lg:text-[38px] xl:text-[48px] 2xl:text-[50px]">vs</div><div class="text-[12px] text-[--yellow] lg:text-[16px] xl:text-[18px] 2xl:text-[22px]">Hiệp 2</div>
+                                                    </div>
+                                                    <div class="flex w-[120px] flex-col items-center justify-center gap-2 overflow-hidden lg:w-[200px] xl:w-[200px] 2xl:w-[200px]">
+                                                        <div class="lazyload-wrapper ">
+                                                            <img title="@match.match.away_team.name" src="@match.match.away_team.logo" alt="Hình ảnh @match.match.away_team.name" class="h-[40px] w-[40px] object-contain lg:h-[70px] lg:w-[70px] xl:h-[70px] xl:w-[70px] 2xl:h-[70px] 2xl:w-[70px]" width="100" height="100" loading="lazy" effect="blur">
+                                                        </div>
+                                                        <h4 title="@match.match.away_team.name" class="mx-auto w-fit max-w-[120px] items-center truncate text-center text-[14px] lg:max-w-[200px] lg:text-[16px] xl:max-w-[200px] xl:text-[20px] 2xl:max-w-[200px] 2xl:text-[24px]">@match.match.away_team.name</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="block w-[100%] max-w-[400px]">
+                                <div class="w-full flex justify-between gap-3 mb-[8px]">
+                                    <div class="w-full text-center bg-red-600 text-white rounded cursor-pointer py-[2px] hover:bg-violet-600 hover:text-white">Trò chuyện</div><div class="w-full text-center bg-white text-black rounded cursor-pointer py-[2px] hover:bg-violet-600 hover:text-white">Trực tiếp</div>
+                                </div>
+                                <div class="comments_blocks z-[1] flex h-[95%] flex-col justify-between rounded-[5px] bg-white">
+                                    <div class="flex flex-row items-center justify-between border-b-[1px] py-2 pl-3 text-xl font-medium">
+                                        <div class="text-lg">Trò chuyện</div><div class="flex items-center gap-2 rounded-s-full bg-[--match-2d] p-2"><span class="text-[--white]">@match.match.viewcount</span><span data-feather="eye" class="icon-eye text-[--white]"></span></div>
+                                    </div>
+                                    <div id="chatContainer" class="flex flex-col justify-self-end overflow-y-auto p-3 h-[300px] sm:h-[300px] md:h-[300px] lg:h-[350px] xl:h-[380px] 2xl:h-[450px]">
+                                        <div class="items-center justify-center rounded-lg bg-[#8B5EC50D] px-2 py-2">
+                                            <span class="comment_content-message text-balance " style="color: rgb(158, 83, 252); font-size: 12px;">Chào mừng các bạn đến với kênh trực tiếp của Livebongda8 cam kết thiết lập một môi trường phát trực tuyến chuyên nghiệp và thân thiện. Mọi nội dung lạm dụng, thô tục hoặc bạo lực sẽ bị chặn.</span>
+                                        </div>
+                                    </div>
+                                    <div class="comment_editor flex items-center gap-2 px-2 pb-6 pt-2">
+                                        <a class="comment-login font-semibold" href="/dang-nhap" previewlistener="true">Vui lòng đăng nhập để có thể bình luận</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                isFirstMatch = false;
+            }
+        }
+    }
+
     <div class="max-w-[90vw] mx-auto md:container lg:container xl:container 2xl:container mb-6">
         <div class="home-grid">
             <a class="hidden xl:block 2xl:block" href="https://cafethethao.page.link/dynamic">
@@ -19,352 +331,168 @@
                         <h2 class="text-[18px] uppercase text-[--violet]">Đang diễn ra</h2>
                     </div>
                     <div class="grid-incoming gap-6 max-w-[1200px] mx-auto">
-                        <div>
-                            <a class="match-container flex flex-col rounded-[--border-radius-10]  shadow-sm" href="indexc23e.html?match=3420416">
-                                <div class="relative">
-                                    <img title="trận đấu Israel (w) vs Scotland (w)" src="~/css/cdn.cafethethao.com/origin/20240604/livestream-israel-w-vs-scotland-w.png" alt="Hình ảnh trận đấu Israel (w) vs Scotland (w)" class="aspect-[460/157] h-auto w-[100%] rounded-t-[--border-radius-10] object-cover" width="460" height="157" loading="lazy" />
-                                    <div class="absolute left-1 top-1 flex gap-2 rounded-[10px] bg-black bg-opacity-50 p-[2px] text-white">
-                                        <div class="flex items-center gap-1 rounded-[10px] bg-[--match-live] px-2">
-                                            <span data-feather="radio" class="icon-Icon-Live live-flash"></span>
-                                            <span class="hidden text-[12px] lg:flex xl:flex 2xl:flex">Trực tiếp</span>
+                        @if (jsonData != null)
+                        {
+                            @foreach (dynamic match in jsonData.result.matchesHot)
+                            {
+                                <div>
+                                    <a class="match-container flex flex-col rounded-[--border-radius-10]  shadow-sm" href="indexc23e.html?match=3420416">
+                                        <div class="relative">
+                                            <img title="@match.title" src="@match.thumbnail"
+                                                 alt="Hình ảnh trận đấu @match.match.home_team.name vs @match.match.away_team.name" class="aspect-[460/157] h-auto w-[100%] rounded-t-[--border-radius-10] object-cover" width="460" height="157" loading="lazy" />
+                                            <div class="absolute left-1 top-1 flex gap-2 rounded-[10px] bg-black bg-opacity-50 p-[2px] text-white">
+                                                <div class="flex items-center gap-1 rounded-[10px] bg-[--match-live] px-2">
+                                                    <span data-feather="radio" class="icon-Icon-Live live-flash"></span>
+                                                    <span class="hidden text-[12px] lg:flex xl:flex 2xl:flex">Trực tiếp</span>
+                                                </div>
+                                                <div class="flex items-center gap-1" title="Có @match.match.view_count người đang xem">
+                                                    <span data-feather="eye" class="icon-eye"></span>
+                                                    <span class="text-[12px]">@match.match.view_count</span>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="flex items-center gap-1" title="Có 70 người đang xem">
-                                            <span data-feather="eye" class="icon-eye"></span>
-                                            <span  class="text-[12px]">70</span>
+                                        <div class="flex flex-col gap-3 p-[6px] lg:p-[16px] xl:p-[16px] 2xl:p-[16px]">
+                                            <div class="flex items-center justify-between">
+                                                <div class="flex items-center gap-3">
+                                                    <div class="relative rounded-[50%] bg-gradient-to-r from-pink-600 to-purple-500 p-[2px]">
+                                                        <div class="avatar-animate absolute z-0 h-[22px] w-[22px] animate-ping  rounded-[50%] bg-gradient-to-r from-pink-600 to-purple-500"></div>
+                                                        <img title="BLV Cafe Thể Thao" src="@match.commentator.photo" alt="Hình ảnh BLV Cafe Thể Thao" class="z-3 relative aspect-square h-[28px] w-[28px] rounded-[50%] border-2 border-[#fff] object-cover" width="40" height="40" loading="lazy" />
+                                                    </div>
+                                                    <div class="flex items-center gap-1">
+                                                        <span class="truncate  text-[12px] font-semibold text-[--violet] lg:text-[14px] xl:text-[14px] 2xl:text-[14px]">@match.commentator.name</span>
+                                                        <span data-feather="mic" class="icon-microphone mic-flash text-[--match-live]"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex items-center gap-1">
+                                                    <span class=" flex text-[--match-live] lg:flex xl:flex 2xl:flex text-[12px]"></span>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center justify-center gap-2">
+                                                <div class="flex w-full items-center justify-end gap-1 lg:gap-3 xl:gap-3 2xl:gap-3">
+                                                    <h4 class="max-w-[90px] w-full truncate text-right text-[12px] font-semibold lg:max-w-[120px] lg:text-[14px] xl:max-w-[120px] xl:text-[14px] 2xl:max-w-[120px] 2xl:text-[14px] text-black">@match.match.home_team.name</h4>
+                                                    <div>
+                                                        <img title="@match.match.home_team.name" src="@match.match.home_team.logo" alt="Hình ảnh @match.match.home_team.name" class="lg:h-[30 px] aspect-square h-[24px]  w-[24px] object-contain lg:w-[30px] xl:h-[30px]  xl:w-[30px] 2xl:h-[30px]  2xl:w-[30px]" width="40" height="40" loading="lazy" />
+                                                    </div>
+                                                </div>
+                                                <div class="bg-gradient-to-r from-pink-600 to-purple-500 bg-clip-text text-[14px] font-semibold uppercase text-[transparent] lg:text-[18px] xl:text-[18px] 2xl:text-[18px]">vs</div>
+                                                <div class="flex w-full items-center justify-start gap-1 lg:gap-3 xl:gap-3 2xl:gap-3">
+                                                    <div>
+                                                        <img title="@match.match.away_team.name" src="@match.match.away_team.logo" alt="Hình ảnh @match.match.away_team.name" class="lg:h-[30 px] aspect-square h-[24px]  w-[24px] object-contain lg:w-[30px] xl:h-[30px]  xl:w-[30px] 2xl:h-[30px]  2xl:w-[30px]" width="40" height="40" loading="lazy" />
+                                                    </div>
+                                                    <h4 class="max-w-[90px] w-full truncate text-left text-[12px] font-semibold lg:max-w-[120px] lg:text-[14px] xl:max-w-[120px] xl:text-[14px] 2xl:max-w-[120px] 2xl:text-[14px] text-black">@match.match.away_team.name</h4>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </div>
-                                <div class="flex flex-col gap-3 p-[6px] lg:p-[16px] xl:p-[16px] 2xl:p-[16px]">
-                                    <div class="flex items-center justify-between">
-                                        <div class="flex items-center gap-3">
-                                            <div class="relative rounded-[50%] bg-gradient-to-r from-pink-600 to-purple-500 p-[2px]">
-                                                <div class="avatar-animate absolute z-0 h-[22px] w-[22px] animate-ping  rounded-[50%] bg-gradient-to-r from-pink-600 to-purple-500"></div>
-                                                <img title="BLV Cafe Thể Thao" src="~/css/cdn.cafethethao.com/origin/football/live/commentator.jpg" alt="Hình ảnh BLV Cafe Thể Thao" class="z-3 relative aspect-square h-[28px] w-[28px] rounded-[50%] border-2 border-[#fff] object-cover" width="40" height="40" loading="lazy" />
-                                            </div>
-                                            <div class="flex items-center gap-1">
-                                                <span class="truncate  text-[12px] font-semibold text-[--violet] lg:text-[14px] xl:text-[14px] 2xl:text-[14px]">BLV Cafe Thể Thao</span>
-                                                <span data-feather="mic" class="icon-microphone mic-flash text-[--match-live]"></span>
-                                            </div>
-                                        </div>
-                                        <div class="flex items-center gap-1">
-                                            <span class=" flex text-[--match-live] lg:flex xl:flex 2xl:flex text-[12px]"></span>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center justify-center gap-2">
-                                        <div class="flex w-full items-center justify-end gap-1 lg:gap-3 xl:gap-3 2xl:gap-3">
-                                            <h4 class="max-w-[90px] w-full truncate text-right text-[12px] font-semibold lg:max-w-[120px] lg:text-[14px] xl:max-w-[120px] xl:text-[14px] 2xl:max-w-[120px] 2xl:text-[14px] text-black">Israel (w)</h4>
-                                            <div>
-                                                <img title="Israel (w)" src="~/css/cdn.livebongda8.com/40x40_min/football/team/a370afda41a7ae62dcb8d1b721b92bed.jpg" alt="Hình ảnh Israel (w)" class="lg:h-[30 px] aspect-square h-[24px]  w-[24px] object-contain lg:w-[30px] xl:h-[30px]  xl:w-[30px] 2xl:h-[30px]  2xl:w-[30px]" width="40" height="40" loading="lazy" />
+                            }
+
+                            @foreach (dynamic match in jsonData.result.matchesLive)
+                            {
+                                <div>
+                                    <a class="match-container flex flex-col rounded-[--border-radius-10]  shadow-sm" href="indexc23e.html?match=3420416">
+                                        <div class="relative">
+                                            <img title="@match.title" src="@match.thumbnail"
+                                                 alt="Hình ảnh trận đấu @match.match.home_team.name vs @match.match.away_team.name" class="aspect-[460/157] h-auto w-[100%] rounded-t-[--border-radius-10] object-cover" width="460" height="157" loading="lazy" />
+                                            <div class="absolute left-1 top-1 flex gap-2 rounded-[10px] bg-black bg-opacity-50 p-[2px] text-white">
+                                                <div class="flex items-center gap-1 rounded-[10px] bg-[--match-live] px-2">
+                                                    <span data-feather="radio" class="icon-Icon-Live live-flash"></span>
+                                                    <span class="hidden text-[12px] lg:flex xl:flex 2xl:flex">Trực tiếp</span>
+                                                </div>
+                                                <div class="flex items-center gap-1" title="Có @match.match.view_count người đang xem">
+                                                    <span data-feather="eye" class="icon-eye"></span>
+                                                    <span class="text-[12px]">@match.match.view_count</span>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="bg-gradient-to-r from-pink-600 to-purple-500 bg-clip-text text-[14px] font-semibold uppercase text-[transparent] lg:text-[18px] xl:text-[18px] 2xl:text-[18px]">vs</div>
-                                        <div class="flex w-full items-center justify-start gap-1 lg:gap-3 xl:gap-3 2xl:gap-3">
-                                            <div>
-                                                <img title="Scotland (w)" src="~/css/cdn.livebongda8.com/40x40_min/football/team/c432976945dc8b1ac46792dfa97ea068.jpg" alt="Hình ảnh Scotland (w)" class="lg:h-[30 px] aspect-square h-[24px]  w-[24px] object-contain lg:w-[30px] xl:h-[30px]  xl:w-[30px] 2xl:h-[30px]  2xl:w-[30px]" width="40" height="40" loading="lazy" />
+                                        <div class="flex flex-col gap-3 p-[6px] lg:p-[16px] xl:p-[16px] 2xl:p-[16px]">
+                                            <div class="flex items-center justify-between">
+                                                <div class="flex items-center gap-3">
+                                                    <div class="relative rounded-[50%] bg-gradient-to-r from-pink-600 to-purple-500 p-[2px]">
+                                                        <div class="avatar-animate absolute z-0 h-[22px] w-[22px] animate-ping  rounded-[50%] bg-gradient-to-r from-pink-600 to-purple-500"></div>
+                                                        <img title="BLV Cafe Thể Thao" src="@match.commentator.photo" alt="Hình ảnh BLV Cafe Thể Thao" class="z-3 relative aspect-square h-[28px] w-[28px] rounded-[50%] border-2 border-[#fff] object-cover" width="40" height="40" loading="lazy" />
+                                                    </div>
+                                                    <div class="flex items-center gap-1">
+                                                        <span class="truncate  text-[12px] font-semibold text-[--violet] lg:text-[14px] xl:text-[14px] 2xl:text-[14px]">@match.commentator.name</span>
+                                                        <span data-feather="mic" class="icon-microphone mic-flash text-[--match-live]"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex items-center gap-1">
+                                                    <span class=" flex text-[--match-live] lg:flex xl:flex 2xl:flex text-[12px]"></span>
+                                                </div>
                                             </div>
-                                            <h4 class="max-w-[90px] w-full truncate text-left text-[12px] font-semibold lg:max-w-[120px] lg:text-[14px] xl:max-w-[120px] xl:text-[14px] 2xl:max-w-[120px] 2xl:text-[14px] text-black">Scotland (w)</h4>
+                                            <div class="flex items-center justify-center gap-2">
+                                                <div class="flex w-full items-center justify-end gap-1 lg:gap-3 xl:gap-3 2xl:gap-3">
+                                                    <h4 class="max-w-[90px] w-full truncate text-right text-[12px] font-semibold lg:max-w-[120px] lg:text-[14px] xl:max-w-[120px] xl:text-[14px] 2xl:max-w-[120px] 2xl:text-[14px] text-black">@match.match.home_team.name</h4>
+                                                    <div>
+                                                        <img title="@match.match.home_team.name" src="@match.match.home_team.logo" alt="Hình ảnh @match.match.home_team.name" class="lg:h-[30 px] aspect-square h-[24px]  w-[24px] object-contain lg:w-[30px] xl:h-[30px]  xl:w-[30px] 2xl:h-[30px]  2xl:w-[30px]" width="40" height="40" loading="lazy" />
+                                                    </div>
+                                                </div>
+                                                <div class="bg-gradient-to-r from-pink-600 to-purple-500 bg-clip-text text-[14px] font-semibold uppercase text-[transparent] lg:text-[18px] xl:text-[18px] 2xl:text-[18px]">vs</div>
+                                                <div class="flex w-full items-center justify-start gap-1 lg:gap-3 xl:gap-3 2xl:gap-3">
+                                                    <div>
+                                                        <img title="@match.match.away_team.name" src="@match.match.away_team.logo" alt="Hình ảnh @match.match.away_team.name" class="lg:h-[30 px] aspect-square h-[24px]  w-[24px] object-contain lg:w-[30px] xl:h-[30px]  xl:w-[30px] 2xl:h-[30px]  2xl:w-[30px]" width="40" height="40" loading="lazy" />
+                                                    </div>
+                                                    <h4 class="max-w-[90px] w-full truncate text-left text-[12px] font-semibold lg:max-w-[120px] lg:text-[14px] xl:max-w-[120px] xl:text-[14px] 2xl:max-w-[120px] 2xl:text-[14px] text-black">@match.match.away_team.name</h4>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </div>
-                            </a>
+                            }
+                        }
+                        @* <div>
+                        <a class="match-container flex flex-col rounded-[--border-radius-10]  shadow-sm" href="index64be.html?match=3420406">
+                        <div class="relative">
+                        <img title="trận đấu Azerbaijan (w) vs Turkey (w)" src="https://cdn.livebongda8.com/livebongda8/_next/static/media/thumb_livebongda8.f950ef8b.webp" alt="Hình ảnh trận đấu Azerbaijan (w) vs Turkey (w)" class="aspect-[460/157] h-auto w-[100%] rounded-t-[--border-radius-10] object-cover" width="460" height="157" loading="lazy" />
+                        <div class="absolute left-1 top-1 flex gap-2 rounded-[10px] bg-black bg-opacity-50 p-[2px] text-white">
+                        <div class="flex items-center gap-1 rounded-[10px] bg-[--match-live] px-2">
+                        <span data-feather="radio" class="icon-Icon-Live live-flash"></span>
+                        <span class="hidden text-[12px] lg:flex xl:flex 2xl:flex">Trực tiếp</span>
                         </div>
-                        <div>
-                            <a class="match-container flex flex-col rounded-[--border-radius-10]  shadow-sm" href="index6330.html?match=50694940">
-                                <div class="relative">
-                                    <img title="trận đấu Kazakhstan U19 vs Azerbaijan U19" src="https://cdn.livebongda8.com/livebongda8/_next/static/media/thumb_livebongda8.f950ef8b.webp" alt="Hình ảnh trận đấu Kazakhstan U19 vs Azerbaijan U19" class="aspect-[460/157] h-auto w-[100%] rounded-t-[--border-radius-10] object-cover" width="460" height="157" loading="lazy" />
-                                    <div class="absolute left-1 top-1 flex gap-2 rounded-[10px] bg-black bg-opacity-50 p-[2px] text-white">
-                                        <div class="flex items-center gap-1 rounded-[10px] bg-[--match-live] px-2">
-                                            <span data-feather="radio" class="icon-Icon-Live live-flash"></span>
-                                            <span class="hidden text-[12px] lg:flex xl:flex 2xl:flex">Trực tiếp</span>
-                                        </div>
-                                        <div class="flex items-center gap-1" title="Có 119 người đang xem">
-                                            <span data-feather="eye" class="icon-eye"></span>
-                                            <span class="text-[12px]">119</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex flex-col gap-3 p-[6px] lg:p-[16px] xl:p-[16px] 2xl:p-[16px]">
-                                    <div class="flex items-center justify-between">
-                                        <div class="flex items-center gap-3">
-                                            <div class="relative rounded-[50%] bg-gradient-to-r from-pink-600 to-purple-500 p-[2px]">
-                                                <div class="avatar-animate absolute z-0 h-[22px] w-[22px] animate-ping  rounded-[50%] bg-gradient-to-r from-pink-600 to-purple-500"></div>
-                                                <img title="BLV Cafe Thể Thao" src="~/css/cdn.cafethethao.com/origin/football/live/commentator.jpg" alt="Hình ảnh BLV Cafe Thể Thao" class="z-3 relative aspect-square h-[28px] w-[28px] rounded-[50%] border-2 border-[#fff] object-cover" width="40" height="40" loading="lazy" />
-                                            </div>
-                                            <div class="flex items-center gap-1">
-                                                <span class="truncate  text-[12px] font-semibold text-[--violet] lg:text-[14px] xl:text-[14px] 2xl:text-[14px]">BLV Cafe Thể Thao</span>
-                                                <span data-feather="mic" class="icon-microphone mic-flash text-[--match-live]"></span>
-                                            </div>
-                                        </div>
-                                        <div class="flex items-center gap-1">
-                                            <span class=" flex text-[--match-live] lg:flex xl:flex 2xl:flex text-[12px]"></span>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center justify-center gap-2">
-                                        <div class="flex w-full items-center justify-end gap-1 lg:gap-3 xl:gap-3 2xl:gap-3">
-                                            <h4 class="max-w-[90px] w-full truncate text-right text-[12px] font-semibold lg:max-w-[120px] lg:text-[14px] xl:max-w-[120px] xl:text-[14px] 2xl:max-w-[120px] 2xl:text-[14px] text-black">Kazakhstan U19</h4>
-                                            <div>
-                                                <img title="Kazakhstan U19" src="~/css/cdn.livebongda8.com/40x40_min/football/team/0b01c7d68feb22290f3b0da91bef689d.jpg" alt="Hình ảnh Kazakhstan U19" class="lg:h-[30 px] aspect-square h-[24px]  w-[24px] object-contain lg:w-[30px] xl:h-[30px]  xl:w-[30px] 2xl:h-[30px]  2xl:w-[30px]" width="40" height="40" loading="lazy" />
-                                            </div>
-                                        </div>
-                                        <div class="bg-gradient-to-r from-pink-600 to-purple-500 bg-clip-text text-[14px] font-semibold uppercase text-[transparent] lg:text-[18px] xl:text-[18px] 2xl:text-[18px]">vs</div>
-                                        <div class="flex w-full items-center justify-start gap-1 lg:gap-3 xl:gap-3 2xl:gap-3">
-                                            <div>
-                                                <img title="Azerbaijan U19" src="~/css/cdn.livebongda8.com/40x40_min/football/team/f653d5976458f0dcce2b3939259acffa.jpg" alt="Hình ảnh Azerbaijan U19" class="lg:h-[30 px] aspect-square h-[24px]  w-[24px] object-contain lg:w-[30px] xl:h-[30px]  xl:w-[30px] 2xl:h-[30px]  2xl:w-[30px]" width="40" height="40" loading="lazy" />
-                                            </div>
-                                            <h4 class="max-w-[90px] w-full truncate text-left text-[12px] font-semibold lg:max-w-[120px] lg:text-[14px] xl:max-w-[120px] xl:text-[14px] 2xl:max-w-[120px] 2xl:text-[14px] text-black">Azerbaijan U19</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
+                        <div class="flex items-center gap-1" title="Có 57 người đang xem">
+                        <span data-feather="eye" class="icon-eye"></span>
+                        <span class="text-[12px]">57</span>
                         </div>
-                        <div>
-                            <a class="match-container flex flex-col rounded-[--border-radius-10]  shadow-sm" href="indexc1e4.html?match=17728035">
-                                <div class="relative">
-                                    <img title="trận đấu Xorazm Urganch vs FK Kokand 1912" src="https://cdn.livebongda8.com/livebongda8/_next/static/media/thumb_livebongda8.f950ef8b.webp" alt="Hình ảnh trận đấu Xorazm Urganch vs FK Kokand 1912" class="aspect-[460/157] h-auto w-[100%] rounded-t-[--border-radius-10] object-cover" width="460" height="157" loading="lazy" />
-                                    <div class="absolute left-1 top-1 flex gap-2 rounded-[10px] bg-black bg-opacity-50 p-[2px] text-white">
-                                        <div class="flex items-center gap-1 rounded-[10px] bg-[--match-live] px-2">
-                                            <span data-feather="radio" class="icon-Icon-Live live-flash"></span>
-                                            <span class="hidden text-[12px] lg:flex xl:flex 2xl:flex">Trực tiếp</span>
-                                        </div>
-                                        <div class="flex items-center gap-1" title="Có 78 người đang xem">
-                                            <span data-feather="eye" class="icon-eye"></span>
-                                            <span class="text-[12px]">78</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex flex-col gap-3 p-[6px] lg:p-[16px] xl:p-[16px] 2xl:p-[16px]">
-                                    <div class="flex items-center justify-between">
-                                        <div class="flex items-center gap-3">
-                                            <div class="relative rounded-[50%] bg-gradient-to-r from-pink-600 to-purple-500 p-[2px]">
-                                                <div class="avatar-animate absolute z-0 h-[22px] w-[22px] animate-ping  rounded-[50%] bg-gradient-to-r from-pink-600 to-purple-500"></div>
-                                                <img title="BLV Cafe Thể Thao" src="~/css/cdn.cafethethao.com/origin/football/live/commentator.jpg" alt="Hình ảnh BLV Cafe Thể Thao" class="z-3 relative aspect-square h-[28px] w-[28px] rounded-[50%] border-2 border-[#fff] object-cover" width="40" height="40" loading="lazy" />
-                                            </div>
-                                            <div class="flex items-center gap-1">
-                                                <span class="truncate w-[80px] lg:w-full xl:w-full 2xl:w-full text-[12px] font-semibold text-[--violet] lg:text-[14px] xl:text-[14px] 2xl:text-[14px]">BLV Cafe Thể Thao</span>
-                                                <span data-feather="mic" class="icon-microphone mic-flash text-[--match-live]"></span>
-                                            </div>
-                                        </div>
-                                        <div class="flex items-center gap-1">
-                                            <span class=" hidden text-[--match-live] lg:flex xl:flex 2xl:flex text-[12px]"></span>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center justify-center gap-2">
-                                        <div class="flex w-full items-center justify-end gap-1 lg:gap-3 xl:gap-3 2xl:gap-3">
-                                            <h4 class="max-w-[50px] w-full truncate text-right text-[12px] font-semibold lg:max-w-[120px] lg:text-[14px] xl:max-w-[120px] xl:text-[14px] 2xl:max-w-[120px] 2xl:text-[14px] text-black">Xorazm Urganch</h4>
-                                            <div>
-                                                <img title="Xorazm Urganch" src="~/css/cdn.livebongda8.com/40x40_min/football/team/7649bb4bc48a8255f27925a97b49af40.jpg" alt="Hình ảnh Xorazm Urganch" class="lg:h-[30 px] aspect-square h-[24px]  w-[24px] object-contain lg:w-[30px] xl:h-[30px]  xl:w-[30px] 2xl:h-[30px]  2xl:w-[30px]" width="40" height="40" loading="lazy" />
-                                            </div>
-                                        </div>
-                                        <div class="bg-gradient-to-r from-pink-600 to-purple-500 bg-clip-text text-[14px] font-semibold uppercase text-[transparent] lg:text-[18px] xl:text-[18px] 2xl:text-[18px]">vs</div>
-                                        <div class="flex w-full items-center justify-start gap-1 lg:gap-3 xl:gap-3 2xl:gap-3">
-                                            <div>
-                                                <img title="FK Kokand 1912" src="~/css/cdn.livebongda8.com/40x40_min/football/team/0a39d6cf470e969f0cc90b082c28a3fa.jpg" alt="Hình ảnh FK Kokand 1912" class="lg:h-[30 px] aspect-square h-[24px]  w-[24px] object-contain lg:w-[30px] xl:h-[30px]  xl:w-[30px] 2xl:h-[30px]  2xl:w-[30px]" width="40" height="40" loading="lazy" />
-                                            </div>
-                                            <h4 class="max-w-[50px] w-full truncate text-left text-[12px] font-semibold lg:max-w-[120px] lg:text-[14px] xl:max-w-[120px] xl:text-[14px] 2xl:max-w-[120px] 2xl:text-[14px] text-black">FK Kokand 1912</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
                         </div>
-                        <div>
-                            <a class="match-container flex flex-col rounded-[--border-radius-10]  shadow-sm" href="indexac9b.html?match=55988480">
-                                <div class="relative">
-                                    <img title="trận đấu Karbala&#x27;a vs Al Talaba" src="https://cdn.livebongda8.com/livebongda8/_next/static/media/thumb_livebongda8.f950ef8b.webp" alt="Hình ảnh trận đấu Karbala&#x27;a vs Al Talaba" class="aspect-[460/157] h-auto w-[100%] rounded-t-[--border-radius-10] object-cover" width="460" height="157" loading="lazy" />
-                                    <div class="absolute left-1 top-1 flex gap-2 rounded-[10px] bg-black bg-opacity-50 p-[2px] text-white">
-                                        <div class="flex items-center gap-1 rounded-[10px] bg-[--match-live] px-2">
-                                            <span data-feather="radio" class="icon-Icon-Live live-flash"></span>
-                                            <span class="hidden text-[12px] lg:flex xl:flex 2xl:flex">Trực tiếp</span>
-                                        </div>
-                                        <div class="flex items-center gap-1" title="Có 49 người đang xem">
-                                            <span data-feather="eye" class="icon-eye"></span>
-                                            <span class="text-[12px]">49</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex flex-col gap-3 p-[6px] lg:p-[16px] xl:p-[16px] 2xl:p-[16px]">
-                                    <div class="flex items-center justify-between">
-                                        <div class="flex items-center gap-3">
-                                            <div class="relative rounded-[50%] bg-gradient-to-r from-pink-600 to-purple-500 p-[2px]">
-                                                <div class="avatar-animate absolute z-0 h-[22px] w-[22px] animate-ping  rounded-[50%] bg-gradient-to-r from-pink-600 to-purple-500"></div>
-                                                <img title="BLV Cafe Thể Thao" src="~/css/cdn.cafethethao.com/origin/football/live/commentator.jpg" alt="Hình ảnh BLV Cafe Thể Thao" class="z-3 relative aspect-square h-[28px] w-[28px] rounded-[50%] border-2 border-[#fff] object-cover" width="40" height="40" loading="lazy" />
-                                            </div>
-                                            <div class="flex items-center gap-1">
-                                                <span class="truncate w-[80px] lg:w-full xl:w-full 2xl:w-full text-[12px] font-semibold text-[--violet] lg:text-[14px] xl:text-[14px] 2xl:text-[14px]">BLV Cafe Thể Thao</span>
-                                                <span data-feather="mic" class="icon-microphone mic-flash text-[--match-live]"></span>
-                                            </div>
-                                        </div>
-                                        <div class="flex items-center gap-1">
-                                            <span class=" hidden text-[--match-live] lg:flex xl:flex 2xl:flex text-[12px]"></span>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center justify-center gap-2">
-                                        <div class="flex w-full items-center justify-end gap-1 lg:gap-3 xl:gap-3 2xl:gap-3">
-                                            <h4 class="max-w-[50px] w-full truncate text-right text-[12px] font-semibold lg:max-w-[120px] lg:text-[14px] xl:max-w-[120px] xl:text-[14px] 2xl:max-w-[120px] 2xl:text-[14px] text-black">Karbala &#x27;a</h4>
-                                            <div>
-                                                <img title="Karbala&#x27;a" src="~/css/cdn.livebongda8.com/40x40_min/football/team/4dbf73a4c63032786c198ecd47c21109.jpg" alt="Hình ảnh Karbala&#x27;a" class="lg:h-[30 px] aspect-square h-[24px]  w-[24px] object-contain lg:w-[30px] xl:h-[30px]  xl:w-[30px] 2xl:h-[30px]  2xl:w-[30px]" width="40" height="40" loading="lazy" />
-                                            </div>
-                                        </div>
-                                        <div class="bg-gradient-to-r from-pink-600 to-purple-500 bg-clip-text text-[14px] font-semibold uppercase text-[transparent] lg:text-[18px] xl:text-[18px] 2xl:text-[18px]">vs</div>
-                                        <div class="flex w-full items-center justify-start gap-1 lg:gap-3 xl:gap-3 2xl:gap-3">
-                                            <div>
-                                                <img title="Al Talaba" src="~/css/cdn.livebongda8.com/40x40_min/football/team/af2108b31664d582d4e59c34c9be571b.jpg" alt="Hình ảnh Al Talaba" class="lg:h-[30 px] aspect-square h-[24px]  w-[24px] object-contain lg:w-[30px] xl:h-[30px]  xl:w-[30px] 2xl:h-[30px]  2xl:w-[30px]" width="40" height="40" loading="lazy" />
-                                            </div>
-                                            <h4 class="max-w-[50px] w-full truncate text-left text-[12px] font-semibold lg:max-w-[120px] lg:text-[14px] xl:max-w-[120px] xl:text-[14px] 2xl:max-w-[120px] 2xl:text-[14px] text-black">Al Talaba</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
                         </div>
-                        <div>
-                            <a class="match-container flex flex-col rounded-[--border-radius-10]  shadow-sm" href="index583a.html?match=3420475">
-                                <div class="relative">
-                                    <img title="trận đấu Kazakhstan (w) vs Armenia (w)" src="https://cdn.livebongda8.com/livebongda8/_next/static/media/thumb_livebongda8.f950ef8b.webp" alt="Hình ảnh trận đấu Kazakhstan (w) vs Armenia (w)" class="aspect-[460/157] h-auto w-[100%] rounded-t-[--border-radius-10] object-cover" width="460" height="157" loading="lazy" />
-                                    <div class="absolute left-1 top-1 flex gap-2 rounded-[10px] bg-black bg-opacity-50 p-[2px] text-white">
-                                        <div class="flex items-center gap-1 rounded-[10px] bg-[--match-live] px-2">
-                                            <span data-feather="radio" class="icon-Icon-Live live-flash"></span>
-                                            <span class="hidden text-[12px] lg:flex xl:flex 2xl:flex">Trực tiếp</span>
-                                        </div>
-                                        <div class="flex items-center gap-1" title="Có 80 người đang xem">
-                                            <span data-feather="eye" class="icon-eye"></span>
-                                            <span class="text-[12px]">80</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex flex-col gap-3 p-[6px] lg:p-[16px] xl:p-[16px] 2xl:p-[16px]">
-                                    <div class="flex items-center justify-between">
-                                        <div class="flex items-center gap-3">
-                                            <div class="relative rounded-[50%] bg-gradient-to-r from-pink-600 to-purple-500 p-[2px]">
-                                                <div class="avatar-animate absolute z-0 h-[22px] w-[22px] animate-ping  rounded-[50%] bg-gradient-to-r from-pink-600 to-purple-500"></div>
-                                                <img title="BLV Cafe Thể Thao" src="~/css/cdn.cafethethao.com/origin/football/live/commentator.jpg" alt="Hình ảnh BLV Cafe Thể Thao" class="z-3 relative aspect-square h-[28px] w-[28px] rounded-[50%] border-2 border-[#fff] object-cover" width="40" height="40" loading="lazy" />
-                                            </div>
-                                            <div class="flex items-center gap-1">
-                                                <span class="truncate w-[80px] lg:w-full xl:w-full 2xl:w-full text-[12px] font-semibold text-[--violet] lg:text-[14px] xl:text-[14px] 2xl:text-[14px]">BLV Cafe Thể Thao</span>
-                                                <span data-feather="mic" class="icon-microphone mic-flash text-[--match-live]"></span>
-                                            </div>
-                                        </div>
-                                        <div class="flex items-center gap-1">
-                                            <span class=" hidden text-[--match-live] lg:flex xl:flex 2xl:flex text-[12px]"></span>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center justify-center gap-2">
-                                        <div class="flex w-full items-center justify-end gap-1 lg:gap-3 xl:gap-3 2xl:gap-3">
-                                            <h4 class="max-w-[50px] w-full truncate text-right text-[12px] font-semibold lg:max-w-[120px] lg:text-[14px] xl:max-w-[120px] xl:text-[14px] 2xl:max-w-[120px] 2xl:text-[14px] text-black">Kazakhstan (w)</h4>
-                                            <div>
-                                                <img title="Kazakhstan (w)" src="~/css/cdn.livebongda8.com/40x40_min/football/team/0b01c7d68feb22290f3b0da91bef689d.jpg" alt="Hình ảnh Kazakhstan (w)" class="lg:h-[30 px] aspect-square h-[24px]  w-[24px] object-contain lg:w-[30px] xl:h-[30px]  xl:w-[30px] 2xl:h-[30px]  2xl:w-[30px]" width="40" height="40" loading="lazy" />
-                                            </div>
-                                        </div>
-                                        <div class="bg-gradient-to-r from-pink-600 to-purple-500 bg-clip-text text-[14px] font-semibold uppercase text-[transparent] lg:text-[18px] xl:text-[18px] 2xl:text-[18px]">vs</div>
-                                        <div class="flex w-full items-center justify-start gap-1 lg:gap-3 xl:gap-3 2xl:gap-3">
-                                            <div>
-                                                <img title="Armenia (w)" src="~/css/cdn.livebongda8.com/40x40_min/football/team/13d8532225dea4fca8e0ebdfb27b83e4.jpg" alt="Hình ảnh Armenia (w)" class="lg:h-[30 px] aspect-square h-[24px]  w-[24px] object-contain lg:w-[30px] xl:h-[30px]  xl:w-[30px] 2xl:h-[30px]  2xl:w-[30px]" width="40" height="40" loading="lazy" />
-                                            </div>
-                                            <h4 class="max-w-[50px] w-full truncate text-left text-[12px] font-semibold lg:max-w-[120px] lg:text-[14px] xl:max-w-[120px] xl:text-[14px] 2xl:max-w-[120px] 2xl:text-[14px] text-black">Armenia (w)</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
+                        <div class="flex flex-col gap-3 p-[6px] lg:p-[16px] xl:p-[16px] 2xl:p-[16px]">
+                        <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                        <div class="relative rounded-[50%] bg-gradient-to-r from-pink-600 to-purple-500 p-[2px]">
+                        <div class="avatar-animate absolute z-0 h-[22px] w-[22px] animate-ping  rounded-[50%] bg-gradient-to-r from-pink-600 to-purple-500"></div>
+                        <img title="BLV Cafe Thể Thao" src="~/css/cdn.cafethethao.com/origin/football/live/commentator.jpg" alt="Hình ảnh BLV Cafe Thể Thao" class="z-3 relative aspect-square h-[28px] w-[28px] rounded-[50%] border-2 border-[#fff] object-cover" width="40" height="40" loading="lazy" />
                         </div>
-                        <div>
-                            <a class="match-container flex flex-col rounded-[--border-radius-10]  shadow-sm" href="index0ad4.html?match=3420456">
-                                <div class="relative">
-                                    <img title="trận đấu Latvia (w) vs Slovenia (w)" src="https://cdn.livebongda8.com/livebongda8/_next/static/media/thumb_livebongda8.f950ef8b.webp" alt="Hình ảnh trận đấu Latvia (w) vs Slovenia (w)" class="aspect-[460/157] h-auto w-[100%] rounded-t-[--border-radius-10] object-cover" width="460" height="157" loading="lazy" />
-                                    <div class="absolute left-1 top-1 flex gap-2 rounded-[10px] bg-black bg-opacity-50 p-[2px] text-white">
-                                        <div class="flex items-center gap-1 rounded-[10px] bg-[--match-live] px-2">
-                                            <span data-feather="radio" class="icon-Icon-Live live-flash"></span>
-                                            <span class="hidden text-[12px] lg:flex xl:flex 2xl:flex">Trực tiếp</span>
-                                        </div>
-                                        <div class="flex items-center gap-1" title="Có 64 người đang xem">
-                                            <span data-feather="eye" class="icon-eye"></span>
-                                            <span class="text-[12px]">64</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex flex-col gap-3 p-[6px] lg:p-[16px] xl:p-[16px] 2xl:p-[16px]">
-                                    <div class="flex items-center justify-between">
-                                        <div class="flex items-center gap-3">
-                                            <div class="relative rounded-[50%] bg-gradient-to-r from-pink-600 to-purple-500 p-[2px]">
-                                                <div class="avatar-animate absolute z-0 h-[22px] w-[22px] animate-ping  rounded-[50%] bg-gradient-to-r from-pink-600 to-purple-500"></div>
-                                                <img title="BLV Cafe Thể Thao" src="~/css/cdn.cafethethao.com/origin/football/live/commentator.jpg" alt="Hình ảnh BLV Cafe Thể Thao" class="z-3 relative aspect-square h-[28px] w-[28px] rounded-[50%] border-2 border-[#fff] object-cover" width="40" height="40" loading="lazy" />
-                                            </div>
-                                            <div class="flex items-center gap-1">
-                                                <span class="truncate w-[80px] lg:w-full xl:w-full 2xl:w-full text-[12px] font-semibold text-[--violet] lg:text-[14px] xl:text-[14px] 2xl:text-[14px]">BLV Cafe Thể Thao</span>
-                                                <span data-feather="mic" class="icon-microphone mic-flash text-[--match-live]"></span>
-                                            </div>
-                                        </div>
-                                        <div class="flex items-center gap-1">
-                                            <span class=" hidden text-[--match-live] lg:flex xl:flex 2xl:flex text-[12px]"></span>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center justify-center gap-2">
-                                        <div class="flex w-full items-center justify-end gap-1 lg:gap-3 xl:gap-3 2xl:gap-3">
-                                            <h4 class="max-w-[50px] w-full truncate text-right text-[12px] font-semibold lg:max-w-[120px] lg:text-[14px] xl:max-w-[120px] xl:text-[14px] 2xl:max-w-[120px] 2xl:text-[14px] text-black">Latvia (w)</h4>
-                                            <div>
-                                                <img title="Latvia (w)" src="~/css/cdn.livebongda8.com/40x40_min/football/team/5b52e27a9d5bf294f5b593c4c071500e.jpg" alt="Hình ảnh Latvia (w)" class="lg:h-[30 px] aspect-square h-[24px]  w-[24px] object-contain lg:w-[30px] xl:h-[30px]  xl:w-[30px] 2xl:h-[30px]  2xl:w-[30px]" width="40" height="40" loading="lazy" />
-                                            </div>
-                                        </div>
-                                        <div class="bg-gradient-to-r from-pink-600 to-purple-500 bg-clip-text text-[14px] font-semibold uppercase text-[transparent] lg:text-[18px] xl:text-[18px] 2xl:text-[18px]">vs</div>
-                                        <div class="flex w-full items-center justify-start gap-1 lg:gap-3 xl:gap-3 2xl:gap-3">
-                                            <div>
-                                                <img title="Slovenia (w)" src="~/css/cdn.livebongda8.com/40x40_min/football/team/e4ba31fba036a999321d5460f7f2d1d1.jpg" alt="Hình ảnh Slovenia (w)" class="lg:h-[30 px] aspect-square h-[24px]  w-[24px] object-contain lg:w-[30px] xl:h-[30px]  xl:w-[30px] 2xl:h-[30px]  2xl:w-[30px]" width="40" height="40" loading="lazy" />
-                                            </div>
-                                            <h4 class="max-w-[50px] w-full truncate text-left text-[12px] font-semibold lg:max-w-[120px] lg:text-[14px] xl:max-w-[120px] xl:text-[14px] 2xl:max-w-[120px] 2xl:text-[14px] text-black">Slovenia (w)</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
+                        <div class="flex items-center gap-1">
+                        <span class="truncate w-[80px] lg:w-full xl:w-full 2xl:w-full text-[12px] font-semibold text-[--violet] lg:text-[14px] xl:text-[14px] 2xl:text-[14px]">BLV Cafe Thể Thao</span>
+                        <span data-feather="mic" class="icon-microphone mic-flash text-[--match-live]"></span>
                         </div>
-                        <div>
-                            <a class="match-container flex flex-col rounded-[--border-radius-10]  shadow-sm" href="index64be.html?match=3420406">
-                                <div class="relative">
-                                    <img title="trận đấu Azerbaijan (w) vs Turkey (w)" src="https://cdn.livebongda8.com/livebongda8/_next/static/media/thumb_livebongda8.f950ef8b.webp" alt="Hình ảnh trận đấu Azerbaijan (w) vs Turkey (w)" class="aspect-[460/157] h-auto w-[100%] rounded-t-[--border-radius-10] object-cover" width="460" height="157" loading="lazy" />
-                                    <div class="absolute left-1 top-1 flex gap-2 rounded-[10px] bg-black bg-opacity-50 p-[2px] text-white">
-                                        <div class="flex items-center gap-1 rounded-[10px] bg-[--match-live] px-2">
-                                            <span data-feather="radio" class="icon-Icon-Live live-flash"></span>
-                                            <span class="hidden text-[12px] lg:flex xl:flex 2xl:flex">Trực tiếp</span>
-                                        </div>
-                                        <div class="flex items-center gap-1" title="Có 57 người đang xem">
-                                            <span data-feather="eye" class="icon-eye"></span>
-                                            <span class="text-[12px]">57</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex flex-col gap-3 p-[6px] lg:p-[16px] xl:p-[16px] 2xl:p-[16px]">
-                                    <div class="flex items-center justify-between">
-                                        <div class="flex items-center gap-3">
-                                            <div class="relative rounded-[50%] bg-gradient-to-r from-pink-600 to-purple-500 p-[2px]">
-                                                <div class="avatar-animate absolute z-0 h-[22px] w-[22px] animate-ping  rounded-[50%] bg-gradient-to-r from-pink-600 to-purple-500"></div>
-                                                <img title="BLV Cafe Thể Thao" src="~/css/cdn.cafethethao.com/origin/football/live/commentator.jpg" alt="Hình ảnh BLV Cafe Thể Thao" class="z-3 relative aspect-square h-[28px] w-[28px] rounded-[50%] border-2 border-[#fff] object-cover" width="40" height="40" loading="lazy" />
-                                            </div>
-                                            <div class="flex items-center gap-1">
-                                                <span class="truncate w-[80px] lg:w-full xl:w-full 2xl:w-full text-[12px] font-semibold text-[--violet] lg:text-[14px] xl:text-[14px] 2xl:text-[14px]">BLV Cafe Thể Thao</span>
-                                                <span data-feather="mic" class="icon-microphone mic-flash text-[--match-live]"></span>
-                                            </div>
-                                        </div>
-                                        <div class="flex items-center gap-1">
-                                            <span class=" hidden text-[--match-live] lg:flex xl:flex 2xl:flex text-[12px]"></span>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center justify-center gap-2">
-                                        <div class="flex w-full items-center justify-end gap-1 lg:gap-3 xl:gap-3 2xl:gap-3">
-                                            <h4 class="max-w-[50px] w-full truncate text-right text-[12px] font-semibold lg:max-w-[120px] lg:text-[14px] xl:max-w-[120px] xl:text-[14px] 2xl:max-w-[120px] 2xl:text-[14px] text-black">Azerbaijan (w)</h4>
-                                            <div>
-                                                <img title="Azerbaijan (w)" src="~/css/cdn.livebongda8.com/40x40_min/football/team/f653d5976458f0dcce2b3939259acffa.jpg" alt="Hình ảnh Azerbaijan (w)" class="lg:h-[30 px] aspect-square h-[24px]  w-[24px] object-contain lg:w-[30px] xl:h-[30px]  xl:w-[30px] 2xl:h-[30px]  2xl:w-[30px]" width="40" height="40" loading="lazy" />
-                                            </div>
-                                        </div>
-                                        <div class="bg-gradient-to-r from-pink-600 to-purple-500 bg-clip-text text-[14px] font-semibold uppercase text-[transparent] lg:text-[18px] xl:text-[18px] 2xl:text-[18px]">vs</div>
-                                        <div class="flex w-full items-center justify-start gap-1 lg:gap-3 xl:gap-3 2xl:gap-3">
-                                            <div>
-                                                <img title="Turkey (w)" src="~/css/cdn.livebongda8.com/40x40_min/football/team/f1a2987a8ae3620ed2ed5462e0e80f5e.jpg" alt="Hình ảnh Turkey (w)" class="lg:h-[30 px] aspect-square h-[24px]  w-[24px] object-contain lg:w-[30px] xl:h-[30px]  xl:w-[30px] 2xl:h-[30px]  2xl:w-[30px]" width="40" height="40" loading="lazy" />
-                                            </div>
-                                            <h4 class="max-w-[50px] w-full truncate text-left text-[12px] font-semibold lg:max-w-[120px] lg:text-[14px] xl:max-w-[120px] xl:text-[14px] 2xl:max-w-[120px] 2xl:text-[14px] text-black">Turkey (w)</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
                         </div>
+                        <div class="flex items-center gap-1">
+                        <span class=" hidden text-[--match-live] lg:flex xl:flex 2xl:flex text-[12px]"></span>
+                        </div>
+                        </div>
+                        <div class="flex items-center justify-center gap-2">
+                        <div class="flex w-full items-center justify-end gap-1 lg:gap-3 xl:gap-3 2xl:gap-3">
+                        <h4 class="max-w-[50px] w-full truncate text-right text-[12px] font-semibold lg:max-w-[120px] lg:text-[14px] xl:max-w-[120px] xl:text-[14px] 2xl:max-w-[120px] 2xl:text-[14px] text-black">Azerbaijan (w)</h4>
+                        <div>
+                        <img title="Azerbaijan (w)" src="~/css/cdn.livebongda8.com/40x40_min/football/team/f653d5976458f0dcce2b3939259acffa.jpg" alt="Hình ảnh Azerbaijan (w)" class="lg:h-[30 px] aspect-square h-[24px]  w-[24px] object-contain lg:w-[30px] xl:h-[30px]  xl:w-[30px] 2xl:h-[30px]  2xl:w-[30px]" width="40" height="40" loading="lazy" />
+                        </div>
+                        </div>
+                        <div class="bg-gradient-to-r from-pink-600 to-purple-500 bg-clip-text text-[14px] font-semibold uppercase text-[transparent] lg:text-[18px] xl:text-[18px] 2xl:text-[18px]">vs</div>
+                        <div class="flex w-full items-center justify-start gap-1 lg:gap-3 xl:gap-3 2xl:gap-3">
+                        <div>
+                        <img title="Turkey (w)" src="~/css/cdn.livebongda8.com/40x40_min/football/team/f1a2987a8ae3620ed2ed5462e0e80f5e.jpg" alt="Hình ảnh Turkey (w)" class="lg:h-[30 px] aspect-square h-[24px]  w-[24px] object-contain lg:w-[30px] xl:h-[30px]  xl:w-[30px] 2xl:h-[30px]  2xl:w-[30px]" width="40" height="40" loading="lazy" />
+                        </div>
+                        <h4 class="max-w-[50px] w-full truncate text-left text-[12px] font-semibold lg:max-w-[120px] lg:text-[14px] xl:max-w-[120px] xl:text-[14px] 2xl:max-w-[120px] 2xl:text-[14px] text-black">Turkey (w)</h4>
+                        </div>
+                        </div>
+                        </div>
+                        </a>
+                        </div>  *@
                     </div>
                 </div>
-                <div class="flex flex-col gap-4">
+                @* <div class="flex flex-col gap-4">
                     <div>
                         <h2 class="text-[18px] uppercase text-[--violet]">Chưa diễn ra</h2>
                     </div>
@@ -915,7 +1043,7 @@
                         </a>
                     </div>
                     <button class="mx-auto w-fit rounded-md border border-[--violet] bg-white p-2 font-semibold text-[--violet] hover:bg-[--violet] hover:text-white">Xem thêm</button>
-                </div>
+                </div> *@
             </div>
             <a class="hidden xl:block 2xl:block" href="https://aloscoredynamic.page.link/app">
                 <img src="https://cdn.livebongda8.com/livebongda8/_next/static/media/banner_alo.25ba5281.webp" alt="ads" width="200" height="400" class="aspect-[200/400] w-full h-auto" />

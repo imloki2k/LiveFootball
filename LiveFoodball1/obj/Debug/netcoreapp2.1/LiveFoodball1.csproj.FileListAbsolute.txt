@@ -29,3 +29,38 @@ E:\workspace\repos\LiveFoodball1\LiveFoodball1\obj\Debug\netcoreapp2.1\LiveFoodb
 E:\workspace\repos\LiveFoodball1\LiveFoodball1\obj\Debug\netcoreapp2.1\LiveFoodball1.csproj.CopyComplete
 E:\workspace\repos\LiveFoodball1\LiveFoodball1\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Layout\Footer.g.cshtml.cs
 E:\workspace\repos\LiveFoodball1\LiveFoodball1\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Layout\Header.g.cshtml.cs
+E:\Code NET\LiveFoodball1\LiveFoodball1\bin\Debug\netcoreapp2.1\appsettings.Development.json
+E:\Code NET\LiveFoodball1\LiveFoodball1\bin\Debug\netcoreapp2.1\appsettings.json
+E:\Code NET\LiveFoodball1\LiveFoodball1\bin\Debug\netcoreapp2.1\LiveFoodball1.deps.json
+E:\Code NET\LiveFoodball1\LiveFoodball1\bin\Debug\netcoreapp2.1\LiveFoodball1.runtimeconfig.json
+E:\Code NET\LiveFoodball1\LiveFoodball1\bin\Debug\netcoreapp2.1\LiveFoodball1.runtimeconfig.dev.json
+E:\Code NET\LiveFoodball1\LiveFoodball1\bin\Debug\netcoreapp2.1\LiveFoodball1.dll
+E:\Code NET\LiveFoodball1\LiveFoodball1\bin\Debug\netcoreapp2.1\LiveFoodball1.pdb
+E:\Code NET\LiveFoodball1\LiveFoodball1\bin\Debug\netcoreapp2.1\LiveFoodball1.Views.dll
+E:\Code NET\LiveFoodball1\LiveFoodball1\bin\Debug\netcoreapp2.1\LiveFoodball1.Views.pdb
+E:\Code NET\LiveFoodball1\LiveFoodball1\obj\Debug\netcoreapp2.1\LiveFoodball1.csproj.AssemblyReference.cache
+E:\Code NET\LiveFoodball1\LiveFoodball1\obj\Debug\netcoreapp2.1\LiveFoodball1.GeneratedMSBuildEditorConfig.editorconfig
+E:\Code NET\LiveFoodball1\LiveFoodball1\obj\Debug\netcoreapp2.1\LiveFoodball1.AssemblyInfoInputs.cache
+E:\Code NET\LiveFoodball1\LiveFoodball1\obj\Debug\netcoreapp2.1\LiveFoodball1.AssemblyInfo.cs
+E:\Code NET\LiveFoodball1\LiveFoodball1\obj\Debug\netcoreapp2.1\LiveFoodball1.csproj.CoreCompileInputs.cache
+E:\Code NET\LiveFoodball1\LiveFoodball1\obj\Debug\netcoreapp2.1\LiveFoodball1.RazorAssemblyInfo.cache
+E:\Code NET\LiveFoodball1\LiveFoodball1\obj\Debug\netcoreapp2.1\LiveFoodball1.RazorAssemblyInfo.cs
+E:\Code NET\LiveFoodball1\LiveFoodball1\obj\Debug\netcoreapp2.1\LiveFoodball1.TagHelpers.input.cache
+E:\Code NET\LiveFoodball1\LiveFoodball1\obj\Debug\netcoreapp2.1\LiveFoodball1.TagHelpers.output.cache
+E:\Code NET\LiveFoodball1\LiveFoodball1\obj\Debug\netcoreapp2.1\LiveFoodball1.RazorCoreGenerate.cache
+E:\Code NET\LiveFoodball1\LiveFoodball1\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.cshtml.g.cs
+E:\Code NET\LiveFoodball1\LiveFoodball1\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Error.cshtml.g.cs
+E:\Code NET\LiveFoodball1\LiveFoodball1\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Layout\Footer.cshtml.g.cs
+E:\Code NET\LiveFoodball1\LiveFoodball1\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Layout\Header.cshtml.g.cs
+E:\Code NET\LiveFoodball1\LiveFoodball1\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_CookieConsentPartial.cshtml.g.cs
+E:\Code NET\LiveFoodball1\LiveFoodball1\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Layout.cshtml.g.cs
+E:\Code NET\LiveFoodball1\LiveFoodball1\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+E:\Code NET\LiveFoodball1\LiveFoodball1\obj\Debug\netcoreapp2.1\Razor\Views\_ViewImports.cshtml.g.cs
+E:\Code NET\LiveFoodball1\LiveFoodball1\obj\Debug\netcoreapp2.1\Razor\Views\_ViewStart.cshtml.g.cs
+E:\Code NET\LiveFoodball1\LiveFoodball1\obj\Debug\netcoreapp2.1\LiveFoodball1.RazorTargetAssemblyInfo.cache
+E:\Code NET\LiveFoodball1\LiveFoodball1\obj\Debug\netcoreapp2.1\LiveFoodball1.RazorTargetAssemblyInfo.cs
+E:\Code NET\LiveFoodball1\LiveFoodball1\obj\Debug\netcoreapp2.1\LiveFoodball1.Views.pdb
+E:\Code NET\LiveFoodball1\LiveFoodball1\obj\Debug\netcoreapp2.1\LiveFoodball1.dll
+E:\Code NET\LiveFoodball1\LiveFoodball1\obj\Debug\netcoreapp2.1\LiveFoodball1.pdb
+E:\Code NET\LiveFoodball1\LiveFoodball1\obj\Debug\netcoreapp2.1\LiveFoodball1.genruntimeconfig.cache
+E:\Code NET\LiveFoodball1\LiveFoodball1\obj\Debug\netcoreapp2.1\LiveFoodball1.csproj.CopyComplete
