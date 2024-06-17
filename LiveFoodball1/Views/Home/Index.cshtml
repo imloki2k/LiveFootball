@@ -8,154 +8,113 @@
         jsonData = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(liveStreamData.ToString());
     }
     var isFirstMatch = true;
-}
+
+    var linkHref = "";
+    if (jsonData.result.matchesHot.Count > 0)
+    {
+        if (isFirstMatch)
+        {
+            foreach (dynamic match in jsonData.result.matchesHot)
+            {
+                linkHref = @match.match.pushurl1 + ".flv";
+                isFirstMatch = false;
+            }
+        }
+    }
+    isFirstMatch = true;
+    }
 <div class="flex flex-col gap-6">
     <h1 class="hidden">Livebongda8</h1>
     @if (jsonData.result.matchesHot.Count > 0)
     {
-        @foreach (dynamic match in jsonData.result.matchesHot)
+        if (isFirstMatch)
         {
-            <div class="bg-black text-white">
-                <div class="max-w-[95vw] mx-auto md:container lg:container xl:container 2xl:container">
-                    <div class="mt-[12px]">
-                        <h2 class="text-[14px] lg:text-[24px] xl:text-[24px] 2xl:text-[24px]">@match.title</h2>
-                        <div class="my-6 flex w-[100%] gap-6 flex-col lg:flex-row xl:flex-row 2xl:flex-row">
-                            <div class="mx-auto w-[100%] max-w-[1240px]">
-                                <div class="">
-                                    <div class="plyr plyr--full-ui plyr--video plyr--html5 plyr--fullscreen-enabled plyr--pip-supported plyr--paused">
-                                        <div class="plyr__controls">
-                                            <button class="plyr__controls__item plyr__control" type="button" data-plyr="play" aria-pressed="false" aria-label="Play">
-                                                <svg class="icon--pressed" aria-hidden="true" focusable="false"><use xlink:href="#plyr-pause"></use></svg>
-                                                <svg class="icon--not-pressed" aria-hidden="true" focusable="false"><use xlink:href="#plyr-play"></use></svg>
-                                                <span class="label--pressed plyr__sr-only">Pause</span><span class="label--not-pressed plyr__sr-only">Play</span>
-                                            </button><div class="plyr__controls__item plyr__progress__container">
-                                                <div class="plyr__progress">
-                                                    <input data-plyr="seek" type="range" min="0" max="100" step="0.01" value="0" autocomplete="off" role="slider" aria-label="Seek" aria-valuemin="0" aria-valuemax="0" aria-valuenow="3.586968" id="plyr-seek-2299" aria-valuetext="00:03 of 00:00" style="--value: 0%;" seek-value="83.41801098097889">
-                                                    <progress class="plyr__progress__buffer" min="0" max="100" value="0" role="progressbar" aria-hidden="true">% buffered</progress><span class="plyr__tooltip">00:00</span>
+            @foreach (dynamic match in jsonData.result.matchesHot)
+            {
+                <div class="bg-black text-white">
+                    <div class="max-w-[95vw] mx-auto md:container lg:container xl:container 2xl:container">
+                        <div class="mt-[12px]">
+                            <h2 class="text-[14px] lg:text-[24px] xl:text-[24px] 2xl:text-[24px]" id="match-title"></h2>
+                            <div class="my-6 flex w-[100%] gap-6 flex-col lg:flex-row xl:flex-row 2xl:flex-row">
+                                <div class="mx-auto w-[100%] max-w-[1240px]">
+                                    <div class="">
+                                        <div id="video-player" style="width: 100%; height: 550px;">
+                                        </div>
+                                        
+                                        <div class="bg-white p-2 rounded-b-[10px] flex flex-col gap-2">
+                                            <div class="flex gap-4 items-center">
+                                                <img title="@match.commentator.name" src="@match.commentator.photo" alt="@match.commentator.name" class="rounded-[50%] w-[35px] h-[35px] object-cover" width="50" height="50" loading="lazy"><div class="flex gap-2 items-center">
+                                                    <span class="lg:text-[14px] xl:text-[14px] 2xl:text-[14px] text-[--match-2d] font-semibold text-[12px]">@match.commentator.name</span><span data-feather="mic" class="icon-microphone mic-flash text-[--match-live]"></span>
                                                 </div>
                                             </div>
-                                            <div class="plyr__controls__item plyr__time--current plyr__time" aria-label="Current time" role="timer">00:-3</div>
-                                            <div class="plyr__controls__item plyr__volume">
-                                                <button type="button" class="plyr__control" data-plyr="mute" aria-pressed="false"><svg class="icon--pressed" aria-hidden="true" focusable="false"><use xlink:href="#plyr-muted"></use></svg>
-                                                    <svg class="icon--not-pressed" aria-hidden="true" focusable="false"><use xlink:href="#plyr-volume"></use></svg>
-                                                    <span class="label--pressed plyr__sr-only">Unmute</span><span class="label--not-pressed plyr__sr-only">Mute</span></button>
-                                                <input data-plyr="volume" type="range" min="0" max="1" step="0.05" value="1" autocomplete="off" role="slider" aria-label="Volume" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100" id="plyr-volume-2299" aria-valuetext="100.0%" style="--value: 100%;">
-                                            </div><button class="plyr__controls__item plyr__control" type="button" data-plyr="captions" aria-pressed="false">
-                                                <svg class="icon--pressed" aria-hidden="true" focusable="false"><use xlink:href="#plyr-captions-on"></use></svg><svg class="icon--not-pressed" aria-hidden="true" focusable="false"><use xlink:href="#plyr-captions-off"></use></svg>
-                                                <span class="label--pressed plyr__sr-only">Disable captions</span><span class="label--not-pressed plyr__sr-only">Enable captions</span>
-                                            </button><div class="plyr__controls__item plyr__menu">
-                                                <button aria-haspopup="true" aria-controls="plyr-settings-2299" aria-expanded="false" type="button" class="plyr__control" data-plyr="settings" aria-pressed="false">
-                                                    <svg aria-hidden="true" focusable="false">
-                                                        <use xlink:href="#plyr-settings"></use></svg><span class="plyr__sr-only">Settings</span></button><div class="plyr__menu__container" id="plyr-settings-2299" hidden="">
-                                                    <div>
-                                                        <div id="plyr-settings-2299-home">
-                                                            <div role="menu">
-                                                                <button data-plyr="settings" type="button" class="plyr__control plyr__control--forward" role="menuitem" aria-haspopup="true" hidden="">
-                                                                    <span>Captions<span class="plyr__menu__value">Disabled</span></span>
-                                                                </button><button data-plyr="settings" type="button" class="plyr__control plyr__control--forward" role="menuitem" aria-haspopup="true" hidden=""><span>Quality<span class="plyr__menu__value">undefined</span></span></button>
-                                                                <button data-plyr="settings" type="button" class="plyr__control plyr__control--forward" role="menuitem" aria-haspopup="true"><span>Speed<span class="plyr__menu__value">Normal</span></span></button>
+                                            <div class="flex flex-col gap-3">
+                                                <div class="flex justify-between gap-2 pt-[12px] ">
+                                                    <div class="flex gap-2">
+                                                        <button class="flex items-center gap-1 rounded-[--border-radius] px-[10px] py-[5px] shadow-md hover:bg-[--red] bg-[--violet] text-white">
+                                                            <div class=" flex items-center justify-center rounded-[50%] bg-[white] text-[--violet] p-[3px]">
+                                                                <span style="font-size: 10px" data-feather="play" class="icon-alo-icon-play text-center"></span>
+                                                            </div><span class="text-[12px] lg:text-[14px] xl:text-[14px] 2xl:text-[14px]">Link 1</span>
+                                                        </button>
+                                                    </div>
+                                                    <button class="flex items-center gap-1 text-black"><span data-feather="copy" class="icon-btn-copy text-[14px] md:text-[16px] lg:text-[16px] xl:text-[16px] 2xl:text-[16px] "></span><span class="xs:text-[12px] sm:text-[12px] md:text-[12px]">Sao chép</span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                 
+                                    <div class="hidden relative text-white">
+                                        <div class="lazyload-wrapper ">
+                                            <img title="Hình ảnh trận đấu sắp diễn ra" src="@match.match.competition.logo" alt="Hình ảnh Hình ảnh trận đấu sắp diễn ra" class="w-[100%] h-auto object-cover" width="961" height="401" loading="lazy" effect="blur">
+                                        </div>
+                                        <div class="absolute left-0 top-0 h-[100%] w-[100%]">
+                                            <div class="mx-auto flex h-[100%] flex-col items-center justify-center gap-4 p-6">
+                                                <h2 class="truncate text-[18px] font-bold uppercase lg:text-[18px] xl:text-[24px] 2xl:text-[28px]">@match.match.competition.name_vi</h2><div class="flex">
+                                                    <div class="flex items-center gap-2">
+                                                        <div class="flex w-[120px] flex-col items-center justify-center gap-2 overflow-hidden lg:w-[200px] xl:w-[200px] 2xl:w-[200px]">
+                                                            <div class="lazyload-wrapper"><img title="@match.match.home_team.name" src="@match.match.home_team.logo" alt="Hình ảnh @match.match.home_team.name" class="h-[40px] w-[40px] object-contain lg:h-[70px] lg:w-[70px] xl:h-[70px] xl:w-[70px] 2xl:h-[70px] 2xl:w-[70px]" width="100" height="100" loading="lazy" effect="blur"></div>
+                                                            <h4 title="@match.match.home_team.name" class="mx-auto w-fit max-w-[120px] items-center truncate text-center text-[14px] lg:max-w-[200px] lg:text-[16px] xl:max-w-[200px] xl:text-[20px] 2xl:max-w-[200px] 2xl:text-[24px]">@match.match.home_team.name</h4>
+                                                        </div>
+                                                        <div class="flex flex-col items-center">
+                                                            <div class="text-center text-[12px] lg:text-[16px] xl:text-[18px] 2xl:text-[22px]">18:00 - 6/6/2024</div>
+                                                            <div class="text-[24px] font-bold uppercase lg:text-[38px] xl:text-[48px] 2xl:text-[50px]">vs</div><div class="text-[12px] text-[--yellow] lg:text-[16px] xl:text-[18px] 2xl:text-[22px]">Hiệp 2</div>
+                                                        </div>
+                                                        <div class="flex w-[120px] flex-col items-center justify-center gap-2 overflow-hidden lg:w-[200px] xl:w-[200px] 2xl:w-[200px]">
+                                                            <div class="lazyload-wrapper ">
+                                                                <img title="@match.match.away_team.name" src="@match.match.away_team.logo" alt="Hình ảnh @match.match.away_team.name" class="h-[40px] w-[40px] object-contain lg:h-[70px] lg:w-[70px] xl:h-[70px] xl:w-[70px] 2xl:h-[70px] 2xl:w-[70px]" width="100" height="100" loading="lazy" effect="blur">
                                                             </div>
-                                                        </div><div id="plyr-settings-2299-captions" hidden="">
-                                                            <button type="button" class="plyr__control plyr__control--back"><span aria-hidden="true">Captions</span><span class="plyr__sr-only">Go back to previous menu</span></button>
-                                                            <div role="menu"></div>
-                                                        </div><div id="plyr-settings-2299-quality" hidden=""><button type="button" class="plyr__control plyr__control--back"><span aria-hidden="true">Quality</span><span class="plyr__sr-only">Go back to previous menu</span></button><div role="menu"></div></div><div id="plyr-settings-2299-speed" hidden="">
-                                                            <button type="button" class="plyr__control plyr__control--back"><span aria-hidden="true">Speed</span><span class="plyr__sr-only">Go back to previous menu</span></button><div role="menu">
-                                                                <button data-plyr="speed" type="button" role="menuitemradio" class="plyr__control" aria-checked="false" value="0.5"><span>0.5×</span></button>
-                                                                <button data-plyr="speed" type="button" role="menuitemradio" class="plyr__control" aria-checked="false" value="0.75"><span>0.75×</span></button>
-                                                                <button data-plyr="speed" type="button" role="menuitemradio" class="plyr__control" aria-checked="true" value="1"><span>Normal</span></button>
-                                                                <button data-plyr="speed" type="button" role="menuitemradio" class="plyr__control" aria-checked="false" value="1.25"><span>1.25×</span></button>
-                                                                <button data-plyr="speed" type="button" role="menuitemradio" class="plyr__control" aria-checked="false" value="1.5"><span>1.5×</span></button>
-                                                                <button data-plyr="speed" type="button" role="menuitemradio" class="plyr__control" aria-checked="false" value="1.75"><span>1.75×</span></button>
-                                                                <button data-plyr="speed" type="button" role="menuitemradio" class="plyr__control" aria-checked="false" value="2"><span>2×</span></button>
-                                                                <button data-plyr="speed" type="button" role="menuitemradio" class="plyr__control" aria-checked="false" value="4"><span>4×</span></button>
-                                                            </div>
+                                                            <h4 title="@match.match.away_team.name" class="mx-auto w-fit max-w-[120px] items-center truncate text-center text-[14px] lg:max-w-[200px] lg:text-[16px] xl:max-w-[200px] xl:text-[20px] 2xl:max-w-[200px] 2xl:text-[24px]">@match.match.away_team.name</h4>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <button class="plyr__controls__item plyr__control" type="button" data-plyr="pip" aria-pressed="false"><svg aria-hidden="true" focusable="false"><use xlink:href="#plyr-pip"></use></svg><span class="plyr__sr-only">PIP</span></button>
-                                            <button class="plyr__controls__item plyr__control" type="button" data-plyr="fullscreen" aria-pressed="false">
-                                                <svg class="icon--pressed" aria-hidden="true" focusable="false"><use xlink:href="#plyr-exit-fullscreen"></use></svg><svg class="icon--not-pressed" aria-hidden="true" focusable="false"><use xlink:href="#plyr-enter-fullscreen"></use></svg>
-                                                <span class="label--pressed plyr__sr-only">Exit fullscreen</span><span class="label--not-pressed plyr__sr-only">Enter fullscreen</span>
-                                            </button>
-                                        </div><div class="plyr__video-wrapper">
-                                            <video id="l7oqdeho47o3r51" autoplay="" crossorigin="anonymous" playsinline="" type="" src="blob:@match.match.pushurl1"></video><div class="plyr__poster"></div>
-                                        </div><div class="plyr__captions" dir="auto"></div><button type="button" class="plyr__control plyr__control--overlaid" data-plyr="play" aria-pressed="false" aria-label="Play"><svg aria-hidden="true" focusable="false"><use xlink:href="#plyr-play"></use></svg><span class="plyr__sr-only">Play</span></button>
-                                    </div>
-
-                                    @* Giao diện phần bình luận *@
-                                    <div class="bg-white p-2 rounded-b-[10px] flex flex-col gap-2">
-                                        <div class="flex gap-4 items-center">
-                                            <img title="@match.commentator.name" src="@match.commentator.photo" alt="@match.commentator.name" class="rounded-[50%] w-[35px] h-[35px] object-cover" width="50" height="50" loading="lazy"><div class="flex gap-2 items-center">
-                                                <span class="lg:text-[14px] xl:text-[14px] 2xl:text-[14px] text-[--match-2d] font-semibold text-[12px]">@match.commentator.name</span><span data-feather="mic" class="icon-microphone mic-flash text-[--match-live]"></span>
-                                            </div>
-                                        </div>
-                                        <div class="flex flex-col gap-3">
-                                            <div class="flex justify-between gap-2 pt-[12px] ">
-                                                <div class="flex gap-2">
-                                                    <button class="flex items-center gap-1 rounded-[--border-radius] px-[10px] py-[5px] shadow-md hover:bg-[--red] bg-[--violet] text-white">
-                                                        <div class=" flex items-center justify-center rounded-[50%] bg-[white] text-[--violet] p-[3px]">
-                                                            <span style="font-size: 10px" data-feather="play" class="icon-alo-icon-play text-center"></span>
-                                                        </div><span class="text-[12px] lg:text-[14px] xl:text-[14px] 2xl:text-[14px]">Link 1</span>
-                                                    </button>
-                                                </div>
-                                                <button class="flex items-center gap-1 text-black"><span data-feather="copy" class="icon-btn-copy text-[14px] md:text-[16px] lg:text-[16px] xl:text-[16px] 2xl:text-[16px] "></span><span class="xs:text-[12px] sm:text-[12px] md:text-[12px]">Sao chép</span></button>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
-
-                                @* Dữ liệu hidden *@
-                                <div class="hidden relative text-white">
-                                    <div class="lazyload-wrapper ">
-                                        <img title="Hình ảnh trận đấu sắp diễn ra" src="@match.match.competition.logo" alt="Hình ảnh Hình ảnh trận đấu sắp diễn ra" class="w-[100%] h-auto object-cover" width="961" height="401" loading="lazy" effect="blur">
+                                <div class="block w-[100%] max-w-[400px]">
+                                    <div class="w-full flex justify-between gap-3 mb-[8px]">
+                                        <div class="w-full text-center bg-red-600 text-white rounded cursor-pointer py-[2px] hover:bg-violet-600 hover:text-white">Trò chuyện</div><div class="w-full text-center bg-white text-black rounded cursor-pointer py-[2px] hover:bg-violet-600 hover:text-white">Trực tiếp</div>
                                     </div>
-                                    <div class="absolute left-0 top-0 h-[100%] w-[100%]">
-                                        <div class="mx-auto flex h-[100%] flex-col items-center justify-center gap-4 p-6">
-                                            <h2 class="truncate text-[18px] font-bold uppercase lg:text-[18px] xl:text-[24px] 2xl:text-[28px]">@match.match.competition.name_vi</h2><div class="flex">
-                                                <div class="flex items-center gap-2">
-                                                    <div class="flex w-[120px] flex-col items-center justify-center gap-2 overflow-hidden lg:w-[200px] xl:w-[200px] 2xl:w-[200px]">
-                                                        <div class="lazyload-wrapper"><img title="@match.match.home_team.name" src="@match.match.home_team.logo" alt="Hình ảnh @match.match.home_team.name" class="h-[40px] w-[40px] object-contain lg:h-[70px] lg:w-[70px] xl:h-[70px] xl:w-[70px] 2xl:h-[70px] 2xl:w-[70px]" width="100" height="100" loading="lazy" effect="blur"></div>
-                                                        <h4 title="@match.match.home_team.name" class="mx-auto w-fit max-w-[120px] items-center truncate text-center text-[14px] lg:max-w-[200px] lg:text-[16px] xl:max-w-[200px] xl:text-[20px] 2xl:max-w-[200px] 2xl:text-[24px]">@match.match.home_team.name</h4>
-                                                    </div>
-                                                    <div class="flex flex-col items-center">
-                                                        <div class="text-center text-[12px] lg:text-[16px] xl:text-[18px] 2xl:text-[22px]">18:00 - 6/6/2024</div>
-                                                        <div class="text-[24px] font-bold uppercase lg:text-[38px] xl:text-[48px] 2xl:text-[50px]">vs</div><div class="text-[12px] text-[--yellow] lg:text-[16px] xl:text-[18px] 2xl:text-[22px]">Hiệp 2</div>
-                                                    </div>
-                                                    <div class="flex w-[120px] flex-col items-center justify-center gap-2 overflow-hidden lg:w-[200px] xl:w-[200px] 2xl:w-[200px]">
-                                                        <div class="lazyload-wrapper ">
-                                                            <img title="@match.match.away_team.name" src="@match.match.away_team.logo" alt="Hình ảnh @match.match.away_team.name" class="h-[40px] w-[40px] object-contain lg:h-[70px] lg:w-[70px] xl:h-[70px] xl:w-[70px] 2xl:h-[70px] 2xl:w-[70px]" width="100" height="100" loading="lazy" effect="blur">
-                                                        </div>
-                                                        <h4 title="@match.match.away_team.name" class="mx-auto w-fit max-w-[120px] items-center truncate text-center text-[14px] lg:max-w-[200px] lg:text-[16px] xl:max-w-[200px] xl:text-[20px] 2xl:max-w-[200px] 2xl:text-[24px]">@match.match.away_team.name</h4>
-                                                    </div>
-                                                </div>
+                                    <div class="comments_blocks z-[1] flex h-[95%] flex-col justify-between rounded-[5px] bg-white">
+                                        <div class="flex flex-row items-center justify-between border-b-[1px] py-2 pl-3 text-xl font-medium">
+                                            <div class="text-lg">Trò chuyện</div><div class="flex items-center gap-2 rounded-s-full bg-[--match-2d] p-2"><span class="text-[--white]">@match.match.viewcount</span><span data-feather="eye" class="icon-eye text-[--white]"></span></div>
+                                        </div>
+                                        <div id="chatContainer" class="flex flex-col justify-self-end overflow-y-auto p-3 h-[300px] sm:h-[300px] md:h-[300px] lg:h-[350px] xl:h-[380px] 2xl:h-[450px]">
+                                            <div class="items-center justify-center rounded-lg bg-[#8B5EC50D] px-2 py-2">
+                                                <span class="comment_content-message text-balance " style="color: rgb(158, 83, 252); font-size: 12px;">Chào mừng các bạn đến với kênh trực tiếp của Livebongda8 cam kết thiết lập một môi trường phát trực tuyến chuyên nghiệp và thân thiện. Mọi nội dung lạm dụng, thô tục hoặc bạo lực sẽ bị chặn.</span>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="block w-[100%] max-w-[400px]">
-                                <div class="w-full flex justify-between gap-3 mb-[8px]">
-                                    <div class="w-full text-center bg-red-600 text-white rounded cursor-pointer py-[2px] hover:bg-violet-600 hover:text-white">Trò chuyện</div><div class="w-full text-center bg-white text-black rounded cursor-pointer py-[2px] hover:bg-violet-600 hover:text-white">Trực tiếp</div>
-                                </div>
-                                <div class="comments_blocks z-[1] flex h-[95%] flex-col justify-between rounded-[5px] bg-white">
-                                    <div class="flex flex-row items-center justify-between border-b-[1px] py-2 pl-3 text-xl font-medium">
-                                        <div class="text-lg">Trò chuyện</div><div class="flex items-center gap-2 rounded-s-full bg-[--match-2d] p-2"><span class="text-[--white]">@match.match.viewcount</span><span data-feather="eye" class="icon-eye text-[--white]"></span></div>
-                                    </div>
-                                    <div id="chatContainer" class="flex flex-col justify-self-end overflow-y-auto p-3 h-[300px] sm:h-[300px] md:h-[300px] lg:h-[350px] xl:h-[380px] 2xl:h-[450px]">
-                                        <div class="items-center justify-center rounded-lg bg-[#8B5EC50D] px-2 py-2">
-                                            <span class="comment_content-message text-balance " style="color: rgb(158, 83, 252); font-size: 12px;">Chào mừng các bạn đến với kênh trực tiếp của Livebongda8 cam kết thiết lập một môi trường phát trực tuyến chuyên nghiệp và thân thiện. Mọi nội dung lạm dụng, thô tục hoặc bạo lực sẽ bị chặn.</span>
+                                        <div class="comment_editor flex items-center gap-2 px-2 pb-6 pt-2">
+                                            <a class="comment-login font-semibold" href="/dang-nhap" previewlistener="true">Vui lòng đăng nhập để có thể bình luận</a>
                                         </div>
-                                    </div>
-                                    <div class="comment_editor flex items-center gap-2 px-2 pb-6 pt-2">
-                                        <a class="comment-login font-semibold" href="/dang-nhap" previewlistener="true">Vui lòng đăng nhập để có thể bình luận</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+                isFirstMatch = false;
+            }
         }
     }
 
@@ -168,81 +127,13 @@
                 <div class="bg-black text-white">
                     <div class="max-w-[95vw] mx-auto md:container lg:container xl:container 2xl:container">
                     <div class="mt-[12px]">
-                        <h2 class="text-[14px] lg:text-[24px] xl:text-[24px] 2xl:text-[24px]">@match.title</h2>
+                            <h2 class="text-[14px] lg:text-[24px] xl:text-[24px] 2xl:text-[24px]" id="match-title"></h2>
                         <div class="my-6 flex w-[100%] gap-6 flex-col lg:flex-row xl:flex-row 2xl:flex-row">
                             <div class="mx-auto w-[100%] max-w-[1240px]">
                                 <div class="">
-                                        <video id="player" controls>
-                                            <source src="https://livebongda8.com/2c7e4bba-cadc-4aea-9a90-4c96c9248656" type="video/mp4">
-                                            <!-- Nếu trình duyệt không hỗ trợ định dạng video -->
-                                            <p>Your browser doesn't support HTML5 video. Here is a <a href="video.mp4">link to the video</a> instead.</p>
-                                        </video>
-                                    @* <div class="plyr plyr--full-ui plyr--video plyr--html5 plyr--fullscreen-enabled plyr--pip-supported plyr--paused">
-                                        <div class="plyr__controls">
-                                            <button class="plyr__controls__item plyr__control" type="button" data-plyr="play" aria-pressed="false" aria-label="Play">
-                                                <svg class="icon--pressed" aria-hidden="true" focusable="false"><use xlink:href="#plyr-pause"></use></svg>
-                                                <svg class="icon--not-pressed" aria-hidden="true" focusable="false"><use xlink:href="#plyr-play"></use></svg>
-                                                <span class="label--pressed plyr__sr-only">Pause</span><span class="label--not-pressed plyr__sr-only">Play</span>
-                                            </button><div class="plyr__controls__item plyr__progress__container">
-                                                <div class="plyr__progress">
-                                                    <input data-plyr="seek" type="range" min="0" max="100" step="0.01" value="0" autocomplete="off" role="slider" aria-label="Seek" aria-valuemin="0" aria-valuemax="0" aria-valuenow="3.586968" id="plyr-seek-2299" aria-valuetext="00:03 of 00:00" style="--value: 0%;" seek-value="83.41801098097889">
-                                                    <progress class="plyr__progress__buffer" min="0" max="100" value="0" role="progressbar" aria-hidden="true">% buffered</progress><span class="plyr__tooltip">00:00</span>
-                                                </div>
-                                            </div>
-                                            <div class="plyr__controls__item plyr__time--current plyr__time" aria-label="Current time" role="timer">00:-3</div>
-                                            <div class="plyr__controls__item plyr__volume">
-                                                <button type="button" class="plyr__control" data-plyr="mute" aria-pressed="false">
-                                                    <svg class="icon--pressed" aria-hidden="true" focusable="false"><use xlink:href="#plyr-muted"></use></svg>
-                                                    <svg class="icon--not-pressed" aria-hidden="true" focusable="false"><use xlink:href="#plyr-volume"></use></svg>
-                                                    <span class="label--pressed plyr__sr-only">Unmute</span><span class="label--not-pressed plyr__sr-only">Mute</span>
-                                                </button>
-                                                <input data-plyr="volume" type="range" min="0" max="1" step="0.05" value="1" autocomplete="off" role="slider" aria-label="Volume" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100" id="plyr-volume-2299" aria-valuetext="100.0%" style="--value: 100%;">
-                                            </div><button class="plyr__controls__item plyr__control" type="button" data-plyr="captions" aria-pressed="false">
-                                                <svg class="icon--pressed" aria-hidden="true" focusable="false"><use xlink:href="#plyr-captions-on"></use></svg><svg class="icon--not-pressed" aria-hidden="true" focusable="false"><use xlink:href="#plyr-captions-off"></use></svg>
-                                                <span class="label--pressed plyr__sr-only">Disable captions</span><span class="label--not-pressed plyr__sr-only">Enable captions</span>
-                                            </button><div class="plyr__controls__item plyr__menu">
-                                                <button aria-haspopup="true" aria-controls="plyr-settings-2299" aria-expanded="false" type="button" class="plyr__control" data-plyr="settings" aria-pressed="false">
-                                                    <svg aria-hidden="true" focusable="false">
-                                                        <use xlink:href="#plyr-settings"></use>
-                                                    </svg><span class="plyr__sr-only">Settings</span>
-                                                </button><div class="plyr__menu__container" id="plyr-settings-2299" hidden="">
-                                                    <div>
-                                                        <div id="plyr-settings-2299-home">
-                                                            <div role="menu">
-                                                                <button data-plyr="settings" type="button" class="plyr__control plyr__control--forward" role="menuitem" aria-haspopup="true" hidden="">
-                                                                    <span>Captions<span class="plyr__menu__value">Disabled</span></span>
-                                                                </button><button data-plyr="settings" type="button" class="plyr__control plyr__control--forward" role="menuitem" aria-haspopup="true" hidden=""><span>Quality<span class="plyr__menu__value">undefined</span></span></button>
-                                                                <button data-plyr="settings" type="button" class="plyr__control plyr__control--forward" role="menuitem" aria-haspopup="true"><span>Speed<span class="plyr__menu__value">Normal</span></span></button>
-                                                            </div>
-                                                        </div><div id="plyr-settings-2299-captions" hidden="">
-                                                            <button type="button" class="plyr__control plyr__control--back"><span aria-hidden="true">Captions</span><span class="plyr__sr-only">Go back to previous menu</span></button>
-                                                            <div role="menu"></div>
-                                                        </div><div id="plyr-settings-2299-quality" hidden=""><button type="button" class="plyr__control plyr__control--back"><span aria-hidden="true">Quality</span><span class="plyr__sr-only">Go back to previous menu</span></button><div role="menu"></div></div><div id="plyr-settings-2299-speed" hidden="">
-                                                            <button type="button" class="plyr__control plyr__control--back"><span aria-hidden="true">Speed</span><span class="plyr__sr-only">Go back to previous menu</span></button><div role="menu">
-                                                                <button data-plyr="speed" type="button" role="menuitemradio" class="plyr__control" aria-checked="false" value="0.5"><span>0.5×</span></button>
-                                                                <button data-plyr="speed" type="button" role="menuitemradio" class="plyr__control" aria-checked="false" value="0.75"><span>0.75×</span></button>
-                                                                <button data-plyr="speed" type="button" role="menuitemradio" class="plyr__control" aria-checked="true" value="1"><span>Normal</span></button>
-                                                                <button data-plyr="speed" type="button" role="menuitemradio" class="plyr__control" aria-checked="false" value="1.25"><span>1.25×</span></button>
-                                                                <button data-plyr="speed" type="button" role="menuitemradio" class="plyr__control" aria-checked="false" value="1.5"><span>1.5×</span></button>
-                                                                <button data-plyr="speed" type="button" role="menuitemradio" class="plyr__control" aria-checked="false" value="1.75"><span>1.75×</span></button>
-                                                                <button data-plyr="speed" type="button" role="menuitemradio" class="plyr__control" aria-checked="false" value="2"><span>2×</span></button>
-                                                                <button data-plyr="speed" type="button" role="menuitemradio" class="plyr__control" aria-checked="false" value="4"><span>4×</span></button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button class="plyr__controls__item plyr__control" type="button" data-plyr="pip" aria-pressed="false"><svg aria-hidden="true" focusable="false"><use xlink:href="#plyr-pip"></use></svg><span class="plyr__sr-only">PIP</span></button>
-                                            <button class="plyr__controls__item plyr__control" type="button" data-plyr="fullscreen" aria-pressed="false">
-                                                <svg class="icon--pressed" aria-hidden="true" focusable="false"><use xlink:href="#plyr-exit-fullscreen"></use></svg><svg class="icon--not-pressed" aria-hidden="true" focusable="false"><use xlink:href="#plyr-enter-fullscreen"></use></svg>
-                                                <span class="label--pressed plyr__sr-only">Exit fullscreen</span><span class="label--not-pressed plyr__sr-only">Enter fullscreen</span>
-                                            </button>
-                                        </div><div class="plyr__video-wrapper">
-                                            <video id="l7oqdeho47o3r51" autoplay="" crossorigin="anonymous" playsinline="" type="" src="blob:@match.match.pushurl1"></video><div class="plyr__poster"></div>
-                                        </div><div class="plyr__captions" dir="auto"></div><button type="button" class="plyr__control plyr__control--overlaid" data-plyr="play" aria-pressed="false" aria-label="Play"><svg aria-hidden="true" focusable="false"><use xlink:href="#plyr-play"></use></svg><span class="plyr__sr-only">Play</span></button>
-                                    </div> *@
-
-                                    @* Giao diện phần bình luận *@
+                                        <div id="video-player" style="width: 100%; height: 550px;">
+                                        </div>
+                                    
                                     <div class="bg-white p-2 rounded-b-[10px] flex flex-col gap-2">
                                         <div class="flex gap-4 items-center">
                                             <img title="@match.commentator.name" src="@match.commentator.photo" alt="@match.commentator.name" class="rounded-[50%] w-[35px] h-[35px] object-cover" width="50" height="50" loading="lazy"><div class="flex gap-2 items-center">
@@ -264,7 +155,7 @@
                                     </div>
                                 </div>
 
-                                @* Dữ liệu hidden *@
+                                
                                 <div class="hidden relative text-white">
                                     <div class="lazyload-wrapper ">
                                         <img title="Hình ảnh trận đấu sắp diễn ra" src="@match.match.competition.logo" alt="Hình ảnh Hình ảnh trận đấu sắp diễn ra" class="w-[100%] h-auto object-cover" width="961" height="401" loading="lazy" effect="blur">
@@ -336,9 +227,9 @@
                             @foreach (dynamic match in jsonData.result.matchesHot)
                             {
                                 <div>
-                                    <a class="match-container flex flex-col rounded-[--border-radius-10]  shadow-sm" href="indexc23e.html?match=3420416">
+                                    <a class="match-container flex flex-col rounded-[--border-radius-10]  shadow-sm" href="@match.match.pushurl1" data-match-title="Trực tiếp trận đấu @match.match.home_team.name vs @match.match.away_team.name">
                                         <div class="relative">
-                                            <img title="@match.title" src="@match.thumbnail"
+                                            <img title="@match.title" src="https://cdn.livebongda8.com/livebongda8/_next/static/media/thumb_livebongda8.f950ef8b.webp"
                                                  alt="Hình ảnh trận đấu @match.match.home_team.name vs @match.match.away_team.name" class="aspect-[460/157] h-auto w-[100%] rounded-t-[--border-radius-10] object-cover" width="460" height="157" loading="lazy" />
                                             <div class="absolute left-1 top-1 flex gap-2 rounded-[10px] bg-black bg-opacity-50 p-[2px] text-white">
                                                 <div class="flex items-center gap-1 rounded-[10px] bg-[--match-live] px-2">
@@ -390,9 +281,9 @@
                             @foreach (dynamic match in jsonData.result.matchesLive)
                             {
                                 <div>
-                                    <a class="match-container flex flex-col rounded-[--border-radius-10]  shadow-sm" href="indexc23e.html?match=3420416">
+                                    <a class="match-container flex flex-col rounded-[--border-radius-10]  shadow-sm" href="@match.match.pushurl1" data-match-title="Trực tiếp trận đấu @match.match.home_team.name vs @match.match.away_team.name">
                                         <div class="relative">
-                                            <img title="@match.title" src="@match.thumbnail"
+                                            <img title="@match.title" src="https://cdn.livebongda8.com/livebongda8/_next/static/media/thumb_livebongda8.f950ef8b.webp"
                                                  alt="Hình ảnh trận đấu @match.match.home_team.name vs @match.match.away_team.name" class="aspect-[460/157] h-auto w-[100%] rounded-t-[--border-radius-10] object-cover" width="460" height="157" loading="lazy" />
                                             <div class="absolute left-1 top-1 flex gap-2 rounded-[10px] bg-black bg-opacity-50 p-[2px] text-white">
                                                 <div class="flex items-center gap-1 rounded-[10px] bg-[--match-live] px-2">
@@ -441,55 +332,6 @@
                                 </div>
                             }
                         }
-                        @* <div>
-                        <a class="match-container flex flex-col rounded-[--border-radius-10]  shadow-sm" href="index64be.html?match=3420406">
-                        <div class="relative">
-                        <img title="trận đấu Azerbaijan (w) vs Turkey (w)" src="https://cdn.livebongda8.com/livebongda8/_next/static/media/thumb_livebongda8.f950ef8b.webp" alt="Hình ảnh trận đấu Azerbaijan (w) vs Turkey (w)" class="aspect-[460/157] h-auto w-[100%] rounded-t-[--border-radius-10] object-cover" width="460" height="157" loading="lazy" />
-                        <div class="absolute left-1 top-1 flex gap-2 rounded-[10px] bg-black bg-opacity-50 p-[2px] text-white">
-                        <div class="flex items-center gap-1 rounded-[10px] bg-[--match-live] px-2">
-                        <span data-feather="radio" class="icon-Icon-Live live-flash"></span>
-                        <span class="hidden text-[12px] lg:flex xl:flex 2xl:flex">Trực tiếp</span>
-                        </div>
-                        <div class="flex items-center gap-1" title="Có 57 người đang xem">
-                        <span data-feather="eye" class="icon-eye"></span>
-                        <span class="text-[12px]">57</span>
-                        </div>
-                        </div>
-                        </div>
-                        <div class="flex flex-col gap-3 p-[6px] lg:p-[16px] xl:p-[16px] 2xl:p-[16px]">
-                        <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-3">
-                        <div class="relative rounded-[50%] bg-gradient-to-r from-pink-600 to-purple-500 p-[2px]">
-                        <div class="avatar-animate absolute z-0 h-[22px] w-[22px] animate-ping  rounded-[50%] bg-gradient-to-r from-pink-600 to-purple-500"></div>
-                        <img title="BLV Cafe Thể Thao" src="~/css/cdn.cafethethao.com/origin/football/live/commentator.jpg" alt="Hình ảnh BLV Cafe Thể Thao" class="z-3 relative aspect-square h-[28px] w-[28px] rounded-[50%] border-2 border-[#fff] object-cover" width="40" height="40" loading="lazy" />
-                        </div>
-                        <div class="flex items-center gap-1">
-                        <span class="truncate w-[80px] lg:w-full xl:w-full 2xl:w-full text-[12px] font-semibold text-[--violet] lg:text-[14px] xl:text-[14px] 2xl:text-[14px]">BLV Cafe Thể Thao</span>
-                        <span data-feather="mic" class="icon-microphone mic-flash text-[--match-live]"></span>
-                        </div>
-                        </div>
-                        <div class="flex items-center gap-1">
-                        <span class=" hidden text-[--match-live] lg:flex xl:flex 2xl:flex text-[12px]"></span>
-                        </div>
-                        </div>
-                        <div class="flex items-center justify-center gap-2">
-                        <div class="flex w-full items-center justify-end gap-1 lg:gap-3 xl:gap-3 2xl:gap-3">
-                        <h4 class="max-w-[50px] w-full truncate text-right text-[12px] font-semibold lg:max-w-[120px] lg:text-[14px] xl:max-w-[120px] xl:text-[14px] 2xl:max-w-[120px] 2xl:text-[14px] text-black">Azerbaijan (w)</h4>
-                        <div>
-                        <img title="Azerbaijan (w)" src="~/css/cdn.livebongda8.com/40x40_min/football/team/f653d5976458f0dcce2b3939259acffa.jpg" alt="Hình ảnh Azerbaijan (w)" class="lg:h-[30 px] aspect-square h-[24px]  w-[24px] object-contain lg:w-[30px] xl:h-[30px]  xl:w-[30px] 2xl:h-[30px]  2xl:w-[30px]" width="40" height="40" loading="lazy" />
-                        </div>
-                        </div>
-                        <div class="bg-gradient-to-r from-pink-600 to-purple-500 bg-clip-text text-[14px] font-semibold uppercase text-[transparent] lg:text-[18px] xl:text-[18px] 2xl:text-[18px]">vs</div>
-                        <div class="flex w-full items-center justify-start gap-1 lg:gap-3 xl:gap-3 2xl:gap-3">
-                        <div>
-                        <img title="Turkey (w)" src="~/css/cdn.livebongda8.com/40x40_min/football/team/f1a2987a8ae3620ed2ed5462e0e80f5e.jpg" alt="Hình ảnh Turkey (w)" class="lg:h-[30 px] aspect-square h-[24px]  w-[24px] object-contain lg:w-[30px] xl:h-[30px]  xl:w-[30px] 2xl:h-[30px]  2xl:w-[30px]" width="40" height="40" loading="lazy" />
-                        </div>
-                        <h4 class="max-w-[50px] w-full truncate text-left text-[12px] font-semibold lg:max-w-[120px] lg:text-[14px] xl:max-w-[120px] xl:text-[14px] 2xl:max-w-[120px] 2xl:text-[14px] text-black">Turkey (w)</h4>
-                        </div>
-                        </div>
-                        </div>
-                        </a>
-                        </div>  *@
                     </div>
                 </div>
                 @* <div class="flex flex-col gap-4">
@@ -1050,4 +892,66 @@
             </a>
         </div>
     </div>
+
+
+    <div class="container"><div class="container_seo"><div class="content_seo max-height-250 flex flex-col gap-2 __className_edaf02"><p>Là một tín đồ bóng đá, bạn luôn mong muốn được theo dõi và cổ vũ cho đội bóng yêu thích của mình. Bạn muốn cập nhật tin tức bóng đá nóng hổi và trải nghiệm những trận cầu đỉnh cao một cách trọn vẹn nhất? Vậy thì Livebongda8 chính là trang web lý tưởng cung cấp lịch thi đấu bóng đá trực tuyến dành cho bạn.</p><p>Livebongda8 là nền tảng trực tuyến chuyên cung cấp các trận đấu bóng đá trực tiếp, miễn phí và chất lượng cao. Thêm vào đó là việc cập nhật lịch thi đấu của tất cả các giải bóng đá lớn nhỏ trên thế giới như Ngoại hạng Anh, La Liga, Serie A, Bundesliga, Champions League, World Cup, Euro,... một cách liên tục và nhanh chóng nhất.</p><h2><strong>Ưu điểm nổi bật của Livebongda8</strong></h2><p>Cùng Livebongda8 theo dõi một số ưu điểm nổi bật của<strong>&nbsp;</strong><a href="https://cafethethao.com/?utm_source=BannerA-03&amp;utm_medium=BannerA-03&amp;utm_campaign=BannerA-03"><strong>lịch thi đấu bóng đá tại Cafe Thể Thao</strong></a><strong>:&nbsp;</strong></p><ul><li><strong>Đa dạng giải đấu:</strong> Livebongda8 cập nhật liên tục các giải đấu bóng đá lớn nhỏ trên toàn thế giới, đáp ứng mọi nhu cầu của người hâm mộ.</li><li><strong>Trực tiếp miễn phí:</strong> Tất cả các trận đấu đều được phát sóng trực tiếp miễn phí, không cần đăng ký tài khoản hay thanh toán bất kỳ khoản phí nào.</li><li><strong>Chất lượng cao:</strong> Livebongda8 sử dụng công nghệ truyền dẫn hiện đại, mang đến hình ảnh sắc nét, âm thanh sống động và mượt mà, giúp bạn có trải nghiệm xem bóng đá tuyệt vời nhất.</li><li><strong>Bình luận chuyên nghiệp:</strong> Đội ngũ bình luận viên dày dặn kinh nghiệm và chuyên môn cao sẽ mang đến cho bạn những bình luận chuyên nghiệp, hấp dẫn và đầy đủ thông tin về trận đấu.</li><li><strong>Cập nhật tin tức:</strong> Livebongda8 còn cung cấp tin tức bóng đá nóng hổi, bảng xếp hạng, lịch thi đấu, kết quả thi đấu,... giúp bạn cập nhật mọi thông tin mới nhất về các đội bóng và cầu thủ yêu thích.</li><li><strong>Giao diện thân thiện:</strong> Giao diện website và ứng dụng Livebongda8 được thiết kế đơn giản, dễ sử dụng, giúp bạn dễ dàng tìm kiếm trận đấu yêu thích và theo dõi trực tiếp.</li><li><strong>Hỗ trợ đa nền tảng:</strong> Livebongda8 có thể truy cập trên nhiều thiết bị khác nhau như: máy tính, điện thoại thông minh, máy tính bảng,... giúp bạn có thể xem bóng đá mọi lúc, mọi nơi.</li></ul><p><strong>Đặc biệt:</strong></p><ul><li>Lịch thi đấu Ngoại Hạng Anh: Cập nhật đầy đủ 38 vòng đấu, thời gian sớm nhất và thông tin chi tiết trước trận đấu.</li><li>Lịch thi đấu Champions League: Cung cấp lịch thi đấu từ vòng bảng đến chung kết, bao gồm thời gian, đội hình, phong độ,...</li><li>Lịch thi đấu các giải đấu khác: Serie A, Bundesliga, Ligue 1, La Liga, World Cup, Euro, V-League,...</li><li>Lịch thi đấu các đội bóng: Real Madrid, Liverpool, AC Milan, Man United, Chelsea,...</li><li>Lịch thi đấu bóng đá Việt Nam: Sea Games, AFF Cup, Vòng loại World Cup,...</li></ul><h2><strong>Lý do nên xem lịch thi đấu bóng đá trên Livebongda8&nbsp;</strong></h2><p>Livebongda8 luôn cập nhật&nbsp;<strong>lịch thi đấu bóng đá tại Cafe Thể Thao</strong> nhanh nhất và chính xác nhất, đảm bảo bạn không bỏ lỡ bất kỳ trận đấu nào, cung cấp đầy đủ cho tất cả các giải đấu bóng đá, bao gồm cả các trận giao hữu, vòng loại, play-off, bảng đấu, vòng knock-out, chung kết, siêu cúp, cúp liên đoàn, cúp quốc gia và cúp châu lục.</p></div><div class="btn-read"><label for="seo-1" class="read_more vi"></label><g clip-path="url(#clip0_125_4693)"><path d="M5.80328 6.70355L4.86328 7.64355L8.86328 11.6436L12.8633 7.64355L11.9233 6.70355L8.86328 9.75689L5.80328 6.70355Z" fill="#37003C"></path></g><defs><clipPath id="clip0_125_4693"><rect width="16" height="16" fill="white" transform="matrix(0 -1 1 0 0.863281 16.9766)"></rect></clipPath></defs><g clip-path="url(#clip0_130_6636)"><path d="M11.8681 11.1158L12.8081 10.1758L8.80811 6.17578L4.80811 10.1758L5.74811 11.1158L8.80811 8.06245L11.8681 11.1158Z" fill="#37003C"></path></g><defs><clipPath id="clip0_130_6636"><rect width="16" height="16" fill="white" transform="matrix(0 1 -1 0 16.8081 0.842773)"></rect></clipPath></defs></div></div></div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/artplayer/dist/artplayer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flv.js@latest"></script>
+    <script>
+        let artPlayer;
+    var linkHref = '@linkHref';
+        document.addEventListener('DOMContentLoaded', function () {
+            artPlayer = new Artplayer({
+                container: '#video-player',
+            url: linkHref,
+                type: 'flv',
+                autoSize: true,
+                autoMini: true,
+                playbackRate: true,
+                aspectRatio: true,
+                fullscreen: true,
+                miniProgressBar: true,
+                setting: true,
+                customType: {
+                    m3u8: function (video, url) {
+                        if (Hls.isSupported()) {
+                            var hls = new Hls();
+                            hls.loadSource(url);
+                            hls.attachMedia(video);
+                        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                            video.src = url;
+                        }
+                    },
+                    flv: function (video, url) {
+                        if (flvjs.isSupported()) {
+                            var flvPlayer = flvjs.createPlayer({
+                                type: 'flv',
+                                url: url
+                            });
+                            flvPlayer.attachMediaElement(video);
+                            flvPlayer.load();
+                        }
+                    }
+                }
+            });
+
+            const links = document.querySelectorAll('a.match-container');
+            links.forEach(link => {
+                link.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    const url = this.getAttribute('href');
+
+                    artPlayer.switchUrl(url + '.flv');
+
+                    updateMatchTitle(this.getAttribute('data-match-title'));
+                });
+            });
+        });
+
+        function updateMatchTitle(title) {
+            document.getElementById('match-title').textContent = title;
+        }
+    </script>

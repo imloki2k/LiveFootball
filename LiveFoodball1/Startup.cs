@@ -31,6 +31,17 @@ namespace LiveFoodball1
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            // Thêm dịch vụ CORS và cấu hình chính sách
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllOrigins",
+                    builder =>
+                    {
+                        builder.AllowAnyOrigin()
+                               .AllowAnyHeader()
+                               .AllowAnyMethod();
+                    });
+            });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddHttpClient();
@@ -48,7 +59,7 @@ namespace LiveFoodball1
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
-
+            app.UseCors("AllowAllOrigins");
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
