@@ -17,6 +17,10 @@
             foreach (dynamic match in jsonData.result.matchesHot)
             {
                 linkHref = @match.match.pushurl1 + ".flv";
+                if (@match.match.pushurl1 == null || @match.match.pushurl1 == "")
+                {
+                    linkHref = @match.match.pushurl4;
+                }
                 isFirstMatch = false;
             }
         }
@@ -228,9 +232,16 @@
                             {
                                 <div>
                                     <a class="match-container flex flex-col rounded-[--border-radius-10]  shadow-sm" href="@match.match.pushurl1" data-match-title="Trực tiếp trận đấu @match.match.home_team.name vs @match.match.away_team.name">
-                                        <div class="relative">
-                                            <img title="@match.title" src="https://cdn.livebongda8.com/livebongda8/_next/static/media/thumb_livebongda8.f950ef8b.webp"
-                                                 alt="Hình ảnh trận đấu @match.match.home_team.name vs @match.match.away_team.name" class="aspect-[460/157] h-auto w-[100%] rounded-t-[--border-radius-10] object-cover" width="460" height="157" loading="lazy" />
+                                       <div class="relative">
+                                            @if (match.thumbnail != null || match.thumbnail != "")
+                                            {
+                                                <img title="@match.title" src="@match.thumbnail"
+                                                     alt="Hình ảnh trận đấu @match.match.home_team.name vs @match.match.away_team.name" class="aspect-[460/157] h-auto w-[100%] rounded-t-[--border-radius-10] object-cover" width="460" height="157" loading="lazy" />
+                                            }else{
+                                                <img title="@match.title" src="https://cdn.livebongda8.com/livebongda8/_next/static/media/thumb_livebongda8.f950ef8b.webp"
+                                                     alt="Hình ảnh trận đấu @match.match.home_team.name vs @match.match.away_team.name" class="aspect-[460/157] h-auto w-[100%] rounded-t-[--border-radius-10] object-cover" width="460" height="157" loading="lazy" />
+                                            }
+                                           
                                             <div class="absolute left-1 top-1 flex gap-2 rounded-[10px] bg-black bg-opacity-50 p-[2px] text-white">
                                                 <div class="flex items-center gap-1 rounded-[10px] bg-[--match-live] px-2">
                                                     <span data-feather="radio" class="icon-Icon-Live live-flash"></span>
@@ -283,8 +294,17 @@
                                 <div>
                                     <a class="match-container flex flex-col rounded-[--border-radius-10]  shadow-sm" href="@match.match.pushurl1" data-match-title="Trực tiếp trận đấu @match.match.home_team.name vs @match.match.away_team.name">
                                         <div class="relative">
-                                            <img title="@match.title" src="https://cdn.livebongda8.com/livebongda8/_next/static/media/thumb_livebongda8.f950ef8b.webp"
-                                                 alt="Hình ảnh trận đấu @match.match.home_team.name vs @match.match.away_team.name" class="aspect-[460/157] h-auto w-[100%] rounded-t-[--border-radius-10] object-cover" width="460" height="157" loading="lazy" />
+                                            @if (match.thumbnail == null || match.thumbnail == "")
+                                            {
+                                                <img title="@match.title" src="https://cdn.livebongda8.com/livebongda8/_next/static/media/thumb_livebongda8.f950ef8b.webp"
+                                                     alt="Hình ảnh trận đấu @match.match.home_team.name vs @match.match.away_team.name" class="aspect-[460/157] h-auto w-[100%] rounded-t-[--border-radius-10] object-cover" width="460" height="157" loading="lazy" />
+                                            }
+                                            else
+                                            {
+                                                <img title="@match.title" src="@match.thumbnail"
+                                                     alt="Hình ảnh trận đấu @match.match.home_team.name vs @match.match.away_team.name" class="aspect-[460/157] h-auto w-[100%] rounded-t-[--border-radius-10] object-cover" width="460" height="157" loading="lazy" />
+                                            }
+
                                             <div class="absolute left-1 top-1 flex gap-2 rounded-[10px] bg-black bg-opacity-50 p-[2px] text-white">
                                                 <div class="flex items-center gap-1 rounded-[10px] bg-[--match-live] px-2">
                                                     <span data-feather="radio" class="icon-Icon-Live live-flash"></span>
@@ -901,13 +921,18 @@
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <script src="https://cdn.jsdelivr.net/npm/flv.js@latest"></script>
     <script>
+    function getFileExtension(url) {
+        return url.split('.').pop().split('?')[0];
+    }
         let artPlayer;
-    var linkHref = '@linkHref';
+        var linkHref = '@linkHref';
+        var fileExtension = getFileExtension(linkHref);
+
         document.addEventListener('DOMContentLoaded', function () {
             artPlayer = new Artplayer({
                 container: '#video-player',
-            url: linkHref,
-                type: 'flv',
+                url: linkHref,
+                type: fileExtension,
                 autoSize: true,
                 autoMini: true,
                 playbackRate: true,
